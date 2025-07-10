@@ -67,19 +67,19 @@ const DashboardLayout = () => {
                   <NavLink to="/dashboard/reported-comments" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
                     <FaCommentDots /> Reported Comments
                   </NavLink>
-                  <NavLink to="/dashboard/announcement" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/makeAnnouncement" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
                     <FaBullhorn /> Make Announcement
                   </NavLink>
                 </>
               {/* ) : ( */}
                 <>
-                  <NavLink to="/dashboard/profile" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/myProfile" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
                     <FaUser /> My Profile
                   </NavLink>
-                  <NavLink to="/dashboard/add-post" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/addPost" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
                     <FaPlus /> Add Post
                   </NavLink>
-                  <NavLink to="/dashboard/my-posts" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/myPosts" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
                     <FaList /> My Posts
                   </NavLink>
                 </>

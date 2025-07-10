@@ -1,10 +1,11 @@
 import { AuthContext } from "../Context/AuthContext";
  import { use, useState } from "react";
 import { Link, NavLink } from "react-router";
-import { FaBell } from "react-icons/fa";
-import logo from "../../assets/communication.png"
 
-const Navbar = ({ announcementCount }) => {
+import logo from "../../assets/communication.png"
+import NotificationBell from "./NotificationBell";
+
+const Navbar = () => {
   const { user, logout } = use(AuthContext);
   const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -52,15 +53,8 @@ const Navbar = ({ announcementCount }) => {
       <NavLink to="/about" className="hover:text-blue-500   ">About</NavLink>
           <NavLink to="/membership" className="hover:text-blue-500    ">Membership</NavLink>
 
-          {/* Notification Icon */}
-          <div className="relative">
-            <FaBell className="text-xl cursor-pointer" />
-            {announcementCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                {announcementCount}
-              </span>
-            )}
-          </div>
+          {/* Notification Icon */} 
+          <NotificationBell />   
 
           {/* Authentication Actions */}
           {!user ? (

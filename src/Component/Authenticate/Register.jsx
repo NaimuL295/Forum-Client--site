@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { imageUpload } from "../Hook/imageUpload";
 import { AuthContext } from "../Context/AuthContext";
 import { Link } from "react-router";
+import axios from "axios";
 
 // Optional: Move this to a separate file if preferred
 
@@ -63,6 +64,24 @@ createUser(data?.email,data?.password).then((result) => {
 const res=result.user;
 updateProfiles({  displayName:data?.name,photoURL:data?.photo})
  setUser({...res, displayName:data?.name,photoURL:data?.photo })
+
+const userInfo = {
+  name: data?.name,
+  email: data?.email,
+  photo: data?.photoUrl,
+  badge: "Bronze", // default on registration
+};
+
+axios.post("http://localhost:5000/user", userInfo)
+  .then((res) => {
+    console.log("User saved:", res.data);
+  })
+  .catch((err) => {
+    console.error("Failed to save user:", err);
+  });
+;
+
+
 }).catch((err) => {
     console.log(err);
     

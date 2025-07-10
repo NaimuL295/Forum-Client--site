@@ -20,16 +20,6 @@ console.log(bannerImg);
 
   return (
     <div>
-  {/* Banner Section */}
-  {/* Overlay */}
-
-
- 
-{/* </motion.section> */} 
-
-
-
-
 <motion.section
   className="relative py-16 px-6 bg-gradient-to-r  text-white"
   initial={{ opacity: 0, y: 30 }}
@@ -37,7 +27,7 @@ console.log(bannerImg);
   transition={{ duration: 1, ease: "easeOut" }}
 >
   {/* Overlay */}
-  <div className="absolute inset-0 bg-black opacity-40"></div>
+  <div className="absolute inset-0  opacity-40"></div>
 
   <motion.div
     className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12"
@@ -89,7 +79,7 @@ console.log(bannerImg);
           placeholder="Search topics or tags..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 "
+          className="w-full px-4 py-3 rounded-l-lg  focus:outline-none focus:ring-2 "
         />
         <button
           // onClick={handleSearch}
