@@ -135,6 +135,7 @@ import axios from "axios";
 import Select from "react-select";
 import { AuthContext } from "../../Context/AuthContext";
 
+
 const tagOptions = [
   { value: "react", label: "React" },
   { value: "node", label: "Node.js" },
@@ -147,18 +148,19 @@ const AddPost = () => {
  const [postCount, setPostCount] = useState(0);
   const [selectedTag, setSelectedTag] = useState(null);
  const navigate = useNavigate();
+// const {userPostsCount}=postCount
 
   const { register, handleSubmit, reset } = useForm();
 
   // ✅ Fetch user’s post count from backend
   useEffect(() => {
     if (user?.email) {
-      axios
-        .get(`http://localhost:5000/posts/count/${user.email}`)
-        .then(res => setPostCount(res.data.count))
-        .catch(err => console.error(err));
+      axios.get(`http://localhost:5000/user_email?emailParams=${user?.email}`)
+        .then(res =>{ setPostCount(res?.data.userPostsCount ) 
+    })
+        .catch(err => console.error(err,"count"));
     }
-  }, []);
+  },[user]);
 
   // ✅ Form submit handler
   const onSubmit = async (data) => {
@@ -185,6 +187,8 @@ const AddPost = () => {
     }
   };
 
+console.log(postCount);
+
   // ✅ If user hit post limit and not a member, show upgrade message
   if (postCount >= 5 && !user?.isMember) {
     return (
@@ -201,10 +205,9 @@ const AddPost = () => {
       </div>
     );
   }
-
   // ✅ Show Post Form
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 bg-black">
+    <div className="max-w-2xl mx-auto px-4 py-8  shadow-2xl">
       <h2 className="text-2xl font-bold mb-6 text-center">Create a New Post</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

@@ -3,22 +3,23 @@ import { Outlet } from 'react-router';
 import logImg  from "../../assets/4957136.jpg"
 const Auth = () => {
     return (
-        <div className='lg:flex   w-7xl mx-auto'>
+        <div className='lg:flex   lg:w-7xl mx-auto'>
 
 
-<div className="flex flex-col lg:flex-row lg:gap-6 p-10">
+<div className="flex flex-col lg:flex-row lg:gap-4 p-10">
 
 
 
 
 
      <div className="lg:flex-1 mt-12 lg:mt-0 flex justify-center">
-    <img
+    
+ <img
       src={logImg}
       alt="Logo"
-      className=" h-auto w-2xl  max-sm:hidden  object-cover"
-    />
-  </div>
+      className="   max-sm:hidden  rounded-3xl  object-cover"
+    /></div>
+ 
   {/* Left Section: Outlet */}
 
   <div className="lg:flex-1">

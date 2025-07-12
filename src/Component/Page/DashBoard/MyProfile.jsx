@@ -35,7 +35,8 @@ const MyProfile = () => {
     icon: '🥉',
     color: 'text-orange-500'
   };
-
+console.log(users);
+console.log(posts);
   return (
     <div className="max-w-4xl mx-auto p-6 sm:px-8 lg:px-12 bg-gradient-to-b from-gray-100 to-white rounded-xl shadow-lg">
 
@@ -52,7 +53,6 @@ const MyProfile = () => {
             <span className="text-2xl">{badge.icon}</span>
           </div>
         </div>
-
         <h2 className="text-3xl font-bold text-gray-800">{users?.name}</h2>
         <p className="text-gray-600">{users?.email}</p>
 

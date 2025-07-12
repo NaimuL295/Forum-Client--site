@@ -1,14 +1,14 @@
 
 // export default DashboardLayout;
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 // import { use } from "react";
-
+import logo from "../../assets/communication.png"
 import { FaUser, FaPlus, FaList, FaBullhorn, FaUsers, FaCommentDots } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthContext";
 import { use } from "react";
 
 const DashboardLayout = () => {
-  const {  logout } = use(AuthContext);
+  const {logout } = use(AuthContext);
  // const isAdmin = user?.role === "admin"; // determine from your backend/user context
 
   return (
@@ -41,45 +41,42 @@ const DashboardLayout = () => {
         <Outlet />
       </div>
 
-
-      
-
-
-
       {/* Sidebar Area */}
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <aside className="w-64 min-h-full bg-base-200 text-base-content p-4 flex flex-col justify-between">
           <div>
-            <div className="text-xl font-bold text-blue-600 mb-6">
-              <NavLink to="/">🧠 ForumSite</NavLink>
+            <div className="text-xl font-bold  mb-6">
+             <Link to="/"  className="inline-flex"><img src={logo} alt="Logo" className="h-8 w-8 max-sm:hidden" />
+                       <h1 className="max-sm:hidden">TalkNexus</h1></Link>
+                     
             </div>
 
             <div className="space-y-2">
               {/* {isAdmin ? ( */}
                 <>
-                  <NavLink to="/dashboard/admin-profile" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/adminProfile" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUser /> Admin Profile
                   </NavLink>
-                  <NavLink to="/dashboard/manage-users" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/manageUsers" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUsers /> Manage Users
                   </NavLink>
-                  <NavLink to="/dashboard/reported-comments" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/reportedComments" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaCommentDots /> Reported Comments
                   </NavLink>
-                  <NavLink to="/dashboardLayout/makeAnnouncement" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/makeAnnouncement" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaBullhorn /> Make Announcement
                   </NavLink>
                 </>
               {/* ) : ( */}
                 <>
-                  <NavLink to="/dashboardLayout/myProfile" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/myProfile" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUser /> My Profile
                   </NavLink>
-                  <NavLink to="/dashboardLayout/addPost" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/addPost" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaPlus /> Add Post
                   </NavLink>
-                  <NavLink to="/dashboardLayout/myPosts" className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded">
+                  <NavLink to="/dashboardLayout/myPosts" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaList /> My Posts
                   </NavLink>
                 </>

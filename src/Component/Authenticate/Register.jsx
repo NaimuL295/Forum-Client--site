@@ -59,11 +59,11 @@ const Register = () => {
   };
 
   const onSubmit = (data) => {
-createUser(data?.email,data?.password).then((result) => {
+createUser(data?.email, data?.password).then((result) => {
     
 const res=result.user;
-updateProfiles({  displayName:data?.name,photoURL:data?.photo})
- setUser({...res, displayName:data?.name,photoURL:data?.photo })
+updateProfiles({displayName:data?.name,photoURL:previewImage})
+ setUser({...res,displayName:data?.name,photoURL:previewImage})
 
 const userInfo = {
   name: data?.name,
@@ -93,17 +93,35 @@ axios.post("http://localhost:5000/user", userInfo)
     setPreviewImage(null);
   };
 
-  const handlerGoogle=()=>{
-  googleSign().then((result) => {
-    console.log(result);
-    
-  }).catch((err) => {
-    console.log(err);
-    
-  });
- 
-  
-  }
+const handlerGoogle = () => {
+  googleSign()
+    .then((result) => {
+      const users = result.user;
+      console.log("Google user:", users);
+
+      const userInfo = {
+        name: users.displayName,
+        email: users.email,
+        photo: users.photoURL,
+        badge: "Bronze", // default badge for new Google users
+      };
+
+      // Save to backend
+      axios.post("http://localhost:5000/user",userInfo)
+        .then((res) => {
+          console.log("User saved:", res.data);
+          Swal.fire("Success", "Logged in with Google!", "success");
+        })
+        .catch((err) => {
+          console.error("Failed to save user:", err);
+          Swal.fire("Error", "Could not save user", "error");
+        });
+    })
+    .catch((err) => {
+      console.log("Google Sign-In Error:", err);
+      Swal.fire("Error", "Google Sign-In failed", "error");
+    });
+};
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="bg-base-100 p-8 rounded-lg shadow-md w-full max-w-md">

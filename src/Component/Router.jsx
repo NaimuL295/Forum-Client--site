@@ -14,6 +14,10 @@ import AddPost from "./Page/DashBoard/AddPost";
 
 import MyPosts from "./Page/DashBoard/MyPosts";
 import MyProfile from "./Page/DashBoard/MyProfile";
+import AdminProfile from "./Page/DashBoard/AdminProfile";
+import ManageUsers from "./Page/DashBoard/ManageUsers";
+import PostDetails from "./Share/PostDetails";
+import ReportedComments from "./Page/DashBoard/ReportedComments";
 
  export const router = createBrowserRouter([
   {
@@ -23,6 +27,7 @@ import MyProfile from "./Page/DashBoard/MyProfile";
      {index:true,
   Component:Home},
    {path:"about",Component:About},
+   {path:"/post/:id",Component:PostDetails},
    {path:"memberShip",element:<MemberShip></MemberShip>}
     ]
   },
@@ -34,14 +39,17 @@ import MyProfile from "./Page/DashBoard/MyProfile";
    },
 { path:"dashboardLayout",Component:DashboardLayout,
   children:[
-   {path:"makeAnnouncement",Component:MakeAnnouncement},
+    {path:"adminProfile",Component:AdminProfile},
+    {path:"makeAnnouncement",Component:MakeAnnouncement},
+    {path:"manageUsers",  Component:ManageUsers},
+    {path:"reportedComments",Component:ReportedComments},
     // user
-
     {path:"addPost",
       Component:AddPost},
-    {path:"myPosts",Component:MyPosts},
-    {path:"myProfile",Component:MyProfile}
+    {path:"myPosts",
+      Component:MyPosts},
+    {path:"myProfile",
+      Component:MyProfile}
    ]
 }
 ]);
-

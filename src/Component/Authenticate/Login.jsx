@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import { FaEye, FaEyeSlash} from "react-icons/fa";
 import { AuthContext } from '../Context/AuthContext';
+import axios from 'axios';
 // import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
@@ -49,7 +50,14 @@ const Login = () => {
     console.log(err);
     
    });
-
+axios.post("http://localhost:5000/user", )
+  .then((res) => {
+    console.log("User saved:", res.data);
+  })
+  .catch((err) => {
+    console.error("Failed to save user:", err);
+  });
+;
     reset();
   };
 

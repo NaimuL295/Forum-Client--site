@@ -1,5 +1,5 @@
 import React, { useEffect, useState, use } from 'react';
-import { Link } from 'react-router';
+import {  Link } from 'react-router';
 import { FaTrashAlt, FaComments } from 'react-icons/fa';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -8,7 +8,6 @@ import { AuthContext } from '../../Context/AuthContext';
 const MyPosts = () => {
   const [myPosts, setMyPosts] = useState([]);
   const { user } = use(AuthContext);
-
    
   useEffect(() => {
     if (user?.email) {
@@ -20,6 +19,7 @@ const MyPosts = () => {
 console.log(myPosts);
 
   const handleDelete = (id) => {
+   
     Swal.fire({
       title: 'Are you sure?',
       text: "This post will be deleted!",
@@ -28,17 +28,15 @@ console.log(myPosts);
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/posts/${id}`)
-          .then(res => {
-            if (res.data.deletedCount > 0) {
+        axios.delete(`http://localhost:5000/post_delate/${id}`)
+          .then(()=> {
               Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
-              setMyPosts(prev => prev.filter(post => post._id !== id));
-            }
+              const filters=data =>data.filter(post => post._id === id)
+              setMyPosts(filters);
           });
       }
     });
   };
-
   return (
     <div className="p-4">
       <h2 className="text-2xl   font-semibold mb-4">My Posts</h2>
