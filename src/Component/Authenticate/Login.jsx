@@ -1,13 +1,17 @@
 import React, { use, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 import { FaEye, FaEyeSlash} from "react-icons/fa";
 import { AuthContext } from '../Context/AuthContext';
 import axios from 'axios';
 // import toast, { Toaster } from 'react-hot-toast';
-
+import { useNavigate } from 'react-router';
 const Login = () => {
+
+  const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from || '/';
     const {googleSign,signUser}=use(AuthContext)
   const {
     register,
@@ -45,7 +49,7 @@ const Login = () => {
 //   }
    signUser(email, password).then((result) => {
     console.log(result);
-    
+    navigate(from)
    }).catch((err) => {
     console.log(err);
     
@@ -65,7 +69,7 @@ axios.post("http://localhost:5000/user", )
   const handlerGoogle=()=>{
   googleSign().then((result) => {
     console.log(result);
-    
+     navigate(from)
   }).catch((err) => {
     console.log(err);
     

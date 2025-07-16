@@ -40,8 +40,7 @@ const TagSection = () => {
           tags.map((tag) => (
             <button
               key={tag._id}
-              className="px-6 py-2 rounded-full bg-gray-100 hover:bg-yellow-300 transition"
-            >
+              className="px-6 py-2 rounded-full bg-gray-100  transition"  >
               #{tag.name}
             </button>
           ))
@@ -52,4 +51,3 @@ const TagSection = () => {
 };
 
 export default TagSection;
-

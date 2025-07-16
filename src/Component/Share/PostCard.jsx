@@ -1,30 +1,73 @@
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
+import { FaThumbsUp, FaThumbsDown, FaTag } from "react-icons/fa";
 
-const PostCard = ({ post}) => {
-  const voteCount = post.upVote - post.downVote;
+const PostCard = ({ post }) => {
+  const {
+    _id,
+    name,
+    email,
+    photo,
+    title,
+    description,
+    tag,
+    upVote,
+    downVote,
+    createdAt
+  } = post;
+
+  const formattedDate = new Date(createdAt).toLocaleDateString();
 
   return (
-    <div className="bg-base-200 rounded-lg p-4 mb-4 shadow-sm">
-      <div className="flex items-center gap-3 mb-2">
-        <img src={post.photo} className="h-10 w-10 rounded-full border" alt="author" />
+    <div className="bg-white shadow-md rounded-xl p-5 hover:shadow-xl transition">
+      {/* Header */}
+      <div className="flex items-center mb-4">
+        <img
+          src={photo}
+          alt={name}
+          className="w-12 h-12 rounded-full object-cover mr-3"
+        />
         <div>
-          <p className="font-semibold">{post.name}</p>
-          <p className="text-sm text-gray-500">{new Date(post.createdAt).toLocaleString()}</p>
+          <h4 className="font-semibold">{name}</h4>
+          <p className="text-sm text-gray-500">{email}</p>
         </div>
       </div>
 
-      <Link to={`/post/${post._id}`} className="text-xl font-bold text-blue-600 hover:underline">
-        {post.title}
-      </Link>
+      {/* Title */}
+      <h2 className="text-xl font-bold mb-2">{title}</h2>
 
-     
-      <div className="flex gap-2 mt-2 text-sm text-gray-700">
-        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">{post.tag}</span>
+      {/* Description */}
+      <p className="text-gray-700 mb-3">
+        {description.length > 150
+          ? `${description.slice(0, 150)}...`
+          : description}
+      </p>
+
+      {/* Tag + Votes */}
+      <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+        <div className="flex items-center gap-2">
+          <FaTag className="text-blue-500" />
+          <span>{tag}</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-1 text-green-600">
+            <FaThumbsUp /> {upVote}
+          </span>
+          <span className="flex items-center gap-1 text-red-600">
+            <FaThumbsDown /> {downVote}
+          </span>
+        </div>
       </div>
 
-      <div className="mt-2 text-sm text-gray-500">
-        Votes: {voteCount} | 
-        {/* Comments: {  || 0} */}
+      {/* Footer */}
+      <div className="flex items-center justify-between text-sm">
+        <p className="text-gray-400">Posted on: {formattedDate}</p>
+        <Link
+          to={`/post/${_id}`}
+          className="text-blue-600 hover:underline font-medium"
+        >
+          View Details →
+        </Link>
       </div>
     </div>
   );

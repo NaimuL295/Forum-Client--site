@@ -4,14 +4,15 @@ import { FaTrashAlt, FaComments } from 'react-icons/fa';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Context/AuthContext';
+import useSecure from '../../Hook/useSecureInstance';
 
 const MyPosts = () => {
   const [myPosts, setMyPosts] = useState([]);
   const { user } = use(AuthContext);
-   
+    const axiosInstance=useSecure()
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:5000/user/post/email?emailParams=${user.email}`)
+      axiosInstance.get(`http://localhost:5000/user/post/email?emailParams=${user.email}`)
         .then(res => setMyPosts(res.data))
         .catch(err => console.error(err));
     }
@@ -31,7 +32,7 @@ console.log(myPosts);
         axios.delete(`http://localhost:5000/post_delate/${id}`)
           .then(()=> {
               Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
-              const filters=data =>data.filter(post => post._id === id)
+              const filters=data =>data.filter(post => post._id !== id)
               setMyPosts(filters);
           });
       }

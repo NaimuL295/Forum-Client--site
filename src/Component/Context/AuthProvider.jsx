@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { AuthContext } from './AuthContext';
 import { auth } from './Firebase';
+import axios from 'axios';
 
 
 const googleProvider=new GoogleAuthProvider();;
@@ -37,19 +38,19 @@ const logout=()=>{
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, currentUser => {
     setUser(currentUser);
-     setLoading(false);
-    // if (currentUser?.email) {
      
-    //   axios.post("https://social-event-server-side.vercel.app/jwt",
-    //     { email: currentUser?.email },
-    //     { withCredentials: true }).
-    //     then((result) => {
-    //     console.log("JWT SET:", result.data);
-    //   }).catch((err) => {
-    //     console.error("JWT ERROR:", err);
-    //   });
-    // }
-   
+    if (currentUser?.email) {
+     
+      axios.post("http://localhost:5000/jwt",
+        { email: currentUser?.email },
+        { withCredentials: true }).
+        then((result) => {
+        console.log("JWT SET:", result.data);
+      }).catch((err) => {
+        console.error("JWT ERROR:", err);
+      });
+    }
+   setLoading(false);
   });
 
   return () => unsubscribe();

@@ -1,16 +1,23 @@
 
-// export default DashboardLayout;
-import { Link, NavLink, Outlet } from "react-router";
-// import { use } from "react";
+
+import { Link, NavLink, Outlet, useNavigate } from "react-router";
+
 import logo from "../../assets/communication.png"
 import { FaUser, FaPlus, FaList, FaBullhorn, FaUsers, FaCommentDots } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthContext";
 import { use } from "react";
+import useUserRole from "../Hook/useUserRole";
 
 const DashboardLayout = () => {
+  const navigate=useNavigate()
+   const { role, roleLoading } = useUserRole();
   const {logout } = use(AuthContext);
- // const isAdmin = user?.role === "admin"; // determine from your backend/user context
-
+  console.log(role,"role",roleLoading);
+  const LogOUt=()=>{
+    logout().then(() => {
+      navigate("/auth/login")
+    })
+  }
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -53,8 +60,9 @@ const DashboardLayout = () => {
             </div>
 
             <div className="space-y-2">
-              {/* {isAdmin ? ( */}
-                <>
+          
+               {!roleLoading && role === 'admin' &&  (
+               <>
                   <NavLink to="/dashboardLayout/adminProfile" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUser /> Admin Profile
                   </NavLink>
@@ -68,7 +76,7 @@ const DashboardLayout = () => {
                     <FaBullhorn /> Make Announcement
                   </NavLink>
                 </>
-              {/* ) : ( */}
+          )}
                 <>
                   <NavLink to="/dashboardLayout/myProfile" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUser /> My Profile
@@ -80,7 +88,7 @@ const DashboardLayout = () => {
                     <FaList /> My Posts
                   </NavLink>
                 </>
-              {/* )} */}
+            
             </div>
           </div>
 
@@ -94,7 +102,7 @@ const DashboardLayout = () => {
               </div> */}
             </div>
             <button
-              onClick={logout}
+              onClick={LogOUt}
               className="w-full text-left bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
             >
               Logout

@@ -42,7 +42,7 @@ const Navbar = () => {
       
         <Link to="/" className="max-sm:text-base    text-2xl font-bold flex items-center gap-2">
           <img src={logo} alt="Logo" className="h-8 w-8 max-sm:hidden" />
-           <h1 className="max-sm:hidden">TalkNexus</h1>
+           <h1 className="max-sm:hidden text-2xl">TalkNexus</h1>
         </Link>
 
         {/* Main Navigation Links */}

@@ -3,12 +3,16 @@ import { use, useState } from "react";
 import Swal from "sweetalert2";
 import { imageUpload } from "../Hook/imageUpload";
 import { AuthContext } from "../Context/AuthContext";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import axios from "axios";
 
-// Optional: Move this to a separate file if preferred
+import { useNavigate } from 'react-router';
 
 const Register = () => {
+
+  const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from || '/';
     const {createUser,updateProfiles,setUser,googleSign}=use(AuthContext)
      const [previewImage, setPreviewImage] = useState(null);
   const {
@@ -75,6 +79,7 @@ const userInfo = {
 axios.post("http://localhost:5000/user", userInfo)
   .then((res) => {
     console.log("User saved:", res.data);
+navigate(from)
   })
   .catch((err) => {
     console.error("Failed to save user:", err);
@@ -111,6 +116,7 @@ const handlerGoogle = () => {
         .then((res) => {
           console.log("User saved:", res.data);
           Swal.fire("Success", "Logged in with Google!", "success");
+          navigate(from)
         })
         .catch((err) => {
           console.error("Failed to save user:", err);

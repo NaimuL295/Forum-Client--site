@@ -1,21 +1,23 @@
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
+import useSecure from '../../Hook/useSecureInstance';
+
 
 const MyProfile = () => {
   const { user } = useContext(AuthContext);  // Correct useContext instead of use
   const [users, setUsers] = useState(null);   // Ensure users state is initially null
   const [posts, setPosts] = useState([]);     // Ensure posts state is an empty array
-
+  const axiosInstance=useSecure()
   useEffect(() => {
     if (user?.email) {
       // Fetch user profile data
-      axios.get(`http://localhost:5000/user/only?emailParams=${user?.email}`)
+      axiosInstance.get(`http://localhost:5000/user/only?emailParams=${user?.email}`)
         .then(res => setUsers(res.data))
         .catch(err => console.error('Error fetching user:', err));
 
       // Fetch recent posts data (3 posts)
-      axios.get(`http://localhost:5000/user/post/email?emailParams=${user?.email}`)
+      axiosInstance.get(`http://localhost:5000/user/post/email?emailParams=${user?.email}`)
         .then(res => setPosts(res.data.slice(0, 3))) // Limit to the first 3 posts
         .catch(err => console.error('Error fetching posts:', err));
     }

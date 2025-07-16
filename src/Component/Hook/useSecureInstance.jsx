@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
   withCredentials:true
  
 });
-const useSecureInstance = () => {
+const useSecure = () => {
 const {logout}=use(AuthContext);
 
  axiosInstance.interceptors.response.use(
@@ -30,4 +30,4 @@ const {logout}=use(AuthContext);
   return axiosInstance
 };
 
-export default useSecureInstance;
+export default useSecure;

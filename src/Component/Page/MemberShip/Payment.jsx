@@ -14,7 +14,7 @@ const Payment = () => {
   const toggleCurrency = () => {
     if (currency === 'usd') {
       setCurrency('bdt');
-      setAmount(4500);
+      setAmount(2499);
     } else {
       setCurrency('usd');
       setAmount(5000);
@@ -63,7 +63,7 @@ const Payment = () => {
       Swal.fire({
         icon: 'success',
         title: 'Payment Successful!',
-        text: `You paid ${currency === 'usd' ? '$50.00' : '৳45.00'}. Welcome to Gold Membership!`,
+        text: `You paid ${currency === 'usd' ? '$50.00' : '৳5500.00'}. Welcome to Gold Membership!`,
       });
 
       setPaymentSuccess(true);
@@ -87,11 +87,11 @@ const Payment = () => {
 
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-3xl font-semibold">Premium</h2>
-            <span className="text-xl">{currency === 'usd' ? '$29/mo' : '৳2499/mo'}</span>
+            <span className="text-xl">{currency === 'usd' ? '$50.00' : '৳2499/mo'}</span>
           </div>
 
           <p className="text-lg mb-6">
-            Pay {currency === 'usd' ? '$50' : '৳45'} to unlock unlimited access and Gold badge.
+            Pay {currency === 'usd' ? '$50' : '৳2499'} to unlock unlimited access and Gold badge.
           </p>
 
           <form onSubmit={handlePayment} className="space-y-4">
@@ -105,7 +105,7 @@ const Payment = () => {
                 ? 'Processing...'
                 : paymentSuccess
                 ? 'Payment Complete'
-                : `Pay ${currency === 'usd' ? '$50' : '৳45'}`}
+                : `Pay ${currency === 'usd' ? '$50' : '৳2499'}`}
             </button>
           </form>
 
