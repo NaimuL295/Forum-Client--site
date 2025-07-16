@@ -1,28 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+
+const fetchAnnouncements = async () => {
+  const res = await axios.get("http://localhost:5000/announcements");
+  return res.data;
+};
 
 const AnnouncementSection = () => {
-  const [announcements, setAnnouncements] = useState([]);
+  const {
+    data: announcements = [],
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ["announcements"],
+    queryFn: fetchAnnouncements,
+  });
 
-  useEffect(() => {
-    axios.get("/announcements")
-      .then(res => setAnnouncements(res.data))
-      .catch(err => console.error("Announcement load error", err));
-  }, []);
-
+  if (isPending) return <div>Loading announcements...</div>;
+  if (error) return <div>Error loading announcements.</div>;
   if (announcements.length === 0) return null;
 
   return (
-    <div className="my-8  p-4 rounded shadow">
+    <div className="my-8 p-4 rounded shadow">
       <h2 className="text-2xl font-semibold mb-4">📢 Announcements</h2>
-      <ul className="space-y-4">
+      <ul className="space-y-4 grid  lg:grid-cols-3 md:grid-cols-2">
         {announcements.map((a) => (
-          <li key={a._id} className=" p-4 rounded shadow-sm">
+          <li key={a._id} className="p-4 rounded shadow-sm">
             <h3 className="text-lg font-bold">{a.title}</h3>
             <p className="text-gray-600">{a.description}</p>
-            <div className="text-sm text-gray-400 mt-2">
-              - {a.authorName}
-            </div>
+            <div className="text-sm text-gray-400 mt-2">- {a.authorName}</div>
           </li>
         ))}
       </ul>
@@ -31,3 +38,4 @@ const AnnouncementSection = () => {
 };
 
 export default AnnouncementSection;
+

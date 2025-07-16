@@ -13,6 +13,8 @@ const Navbar = () => {
     logout();
     setOpenDropdown(false);
   };
+  console.log(user?.photoURL);
+  
   return (
     <nav className=" shadow-sm px-2 py-6">
       <div className="flex justify-between items-center max-w-7xl mx-auto">

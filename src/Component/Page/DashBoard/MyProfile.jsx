@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState,  use } from 'react';
 //import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
 import useSecure from '../../Hook/useSecureInstance';
 
 
 const MyProfile = () => {
-  const { user } = useContext(AuthContext);  // Correct useContext instead of use
-  const [users, setUsers] = useState(null);   // Ensure users state is initially null
-  const [posts, setPosts] = useState([]);     // Ensure posts state is an empty array
+  const { user } = use(AuthContext);  
+  const [users, setUsers] = useState(null);   
+  const [posts, setPosts] = useState([]);     
   const axiosInstance=useSecure()
   useEffect(() => {
     if (user?.email) {

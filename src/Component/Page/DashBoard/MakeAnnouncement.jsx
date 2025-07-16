@@ -53,7 +53,7 @@ const MakeAnnouncement = () => {
         <input
           type="text"
           placeholder="Title"
-          className="w-full input input-bordered text-white"
+          className="w-full input input-bordered "
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
