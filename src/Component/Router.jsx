@@ -19,6 +19,7 @@ import ManageUsers from "./Page/DashBoard/ManageUsers";
 import PostDetails from "./Share/PostDetails";
 import ReportedComments from "./Page/DashBoard/ReportedComments";
 import Private from "./Context/Private";
+import Admin from "./Context/Admin";
 
  export const router = createBrowserRouter([
   {
@@ -41,10 +42,15 @@ import Private from "./Context/Private";
 { path:"dashboardLayout",element:<Private> <DashboardLayout></DashboardLayout> </Private>
 ,
   children:[
-    {path:"adminProfile",Component:AdminProfile},
-    {path:"makeAnnouncement",Component:MakeAnnouncement},
-    {path:"manageUsers",  Component:ManageUsers},
-    {path:"reportedComments",Component:ReportedComments},
+    {path:"adminProfile",  
+       element: <Admin><AdminProfile></AdminProfile></Admin>  },
+    {path:"makeAnnouncement" ,
+      element:<Admin> <MakeAnnouncement></MakeAnnouncement></Admin> },
+    {path:"manageUsers",    
+        element:<Admin> <ManageUsers></ManageUsers> </Admin>},
+    {path:"reportedComments", 
+      element:<Admin>  <ReportedComments></ReportedComments></Admin>},
+      // Component:ReportedComments
 
     // user
     {path:"addPost",

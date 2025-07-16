@@ -26,7 +26,7 @@ const Navbar = () => {
           </div>
         
         
-          <ul
+          {/* <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-x-3 ">
           
@@ -34,7 +34,7 @@ const Navbar = () => {
       <NavLink to="/about" className="hover:text-blue-500">About</NavLink>
           <NavLink to="/membership" className="hover:text-blue-500">Membership</NavLink>
           
-          </ul>
+          </ul> */}
         </div>
       
       

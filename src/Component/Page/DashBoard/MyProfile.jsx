@@ -47,7 +47,7 @@ console.log(posts);
         <div className="relative">
           {/* Profile Image with border */}
           <img
-            src={users?.image || '/default-user.png'}
+            src={user?.photoURL || '/default-user.png'}
             alt="User"
             className="w-36 h-36 rounded-full object-cover border-4 border-white shadow-xl mb-4"
           />
