@@ -207,8 +207,7 @@ const AddPost = () => {
       return res.data.map(tag => ({ value: tag.name, label: tag.name }));
     }
   });
-console.log(postCount);
-console.log(user?.photoURL,"cdfdfd");
+
   // ✅ Alert if post limit exceeded (once)
   useEffect(() => {
     if (postCount >= 5 && !isMember) {

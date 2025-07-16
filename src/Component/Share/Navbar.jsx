@@ -13,7 +13,6 @@ const Navbar = () => {
     logout();
     setOpenDropdown(false);
   };
-  console.log(user?.photoURL,"nav");
   
   return (
     <nav className=" shadow-sm px-2 py-6">

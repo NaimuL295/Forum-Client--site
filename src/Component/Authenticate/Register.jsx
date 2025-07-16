@@ -26,6 +26,7 @@ const Register = () => {
 
  
 
+
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -54,7 +55,7 @@ const Register = () => {
       setValue("photoUrl", imageUrl); // save uploaded URL into react-hook-form
       Swal.close();
       Swal.fire("Success", "Image uploaded!", "success");
-      console.log();
+      
       
     } catch (err) {
       setPreviewImage(null);
@@ -68,21 +69,22 @@ const Register = () => {
 createUser(data?.email, data?.password).then((result) => {
     
 const res=result.user;
-updateProfiles({displayName:data?.name,photoURL:previewImage})
- setUser({...res,displayName:data?.name,photoURL:previewImage})
+updateProfiles({displayName:data?.name,photoURL: data.photoUrl})
+ setUser({...res,displayName:data?.name,photoURL: data.photoUrl})
 
 const userInfo = {
   name: data?.name,
   email: data?.email,
-  photo: previewImage,
+  photo: data?.photoURL,
   badge: "Bronze", // default on registration
 };
-console.log(previewImage);
+
+
 
 axios.post("http://localhost:5000/user", userInfo)
   .then((res) => {
     console.log("User saved:", res.data);
-navigate(from)
+// navigate(from)
   })
   .catch((err) => {
     console.error("Failed to save user:", err);
@@ -110,7 +112,7 @@ const handlerGoogle = () => {
       const userInfo = {
         name: users?.displayName,
         email: users?.email,
-        photo: users?.photoURL,
+        photo: users?.photoURL ,
         badge: "Bronze", // default badge for new Google users
       };
 
@@ -131,6 +133,8 @@ const handlerGoogle = () => {
       Swal.fire("Error", "Google Sign-In failed", "error");
     });
 };
+
+
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="bg-base-100 p-8 rounded-lg shadow-md w-full max-w-md">
