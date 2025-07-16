@@ -54,6 +54,8 @@ const Register = () => {
       setValue("photoUrl", imageUrl); // save uploaded URL into react-hook-form
       Swal.close();
       Swal.fire("Success", "Image uploaded!", "success");
+      console.log();
+      
     } catch (err) {
       setPreviewImage(null);
       console.log(err);
@@ -72,9 +74,10 @@ updateProfiles({displayName:data?.name,photoURL:previewImage})
 const userInfo = {
   name: data?.name,
   email: data?.email,
-  photo: data?.photoUrl,
+  photo: previewImage,
   badge: "Bronze", // default on registration
 };
+console.log(previewImage);
 
 axios.post("http://localhost:5000/user", userInfo)
   .then((res) => {
@@ -105,9 +108,9 @@ const handlerGoogle = () => {
       console.log("Google user:", users);
 
       const userInfo = {
-        name: users.displayName,
-        email: users.email,
-        photo: users.photoURL,
+        name: users?.displayName,
+        email: users?.email,
+        photo: users?.photoURL,
         badge: "Bronze", // default badge for new Google users
       };
 

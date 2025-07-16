@@ -208,7 +208,7 @@ const AddPost = () => {
     }
   });
 console.log(postCount);
-
+console.log(user?.photoURL,"cdfdfd");
   // ✅ Alert if post limit exceeded (once)
   useEffect(() => {
     if (postCount >= 5 && !isMember) {
@@ -238,7 +238,7 @@ console.log(postCount);
       downVote: 0,
       createdAt: new Date(),
     };
-console.log();
+
 
     try {
       const res = await axios.post("http://localhost:5000/create/posts", postData);

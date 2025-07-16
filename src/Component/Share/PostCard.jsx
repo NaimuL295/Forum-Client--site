@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { FaThumbsUp, FaThumbsDown, FaTag } from "react-icons/fa";
+import { IoLogoAndroid } from "react-icons/io";
 
 const PostCard = ({ post }) => {
   const {
@@ -14,8 +15,9 @@ const PostCard = ({ post }) => {
     upVote,
     downVote,
     createdAt
-  } = post;
-
+  } = post
+ 
+  
   const formattedDate = new Date(createdAt).toLocaleDateString();
 
   return (
