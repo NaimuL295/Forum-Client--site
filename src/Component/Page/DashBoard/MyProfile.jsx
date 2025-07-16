@@ -27,7 +27,7 @@ const MyProfile = () => {
     return <div className="text-center mt-10 text-lg">Loading profile...</div>;
   }
 
-  // Badge logic for Gold/Bronze based on user membership
+  
   const badge = user?.isMember ? {
     label: 'Gold Member',
     icon: '🥇', // Replace with image or icon if needed

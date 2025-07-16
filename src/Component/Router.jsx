@@ -43,13 +43,13 @@ import Admin from "./Context/Admin";
 ,
   children:[
     {path:"adminProfile",  
-       element: <Admin><AdminProfile></AdminProfile></Admin>  },
+       element: <Admin> <AdminProfile></AdminProfile> </Admin>},
     {path:"makeAnnouncement" ,
-      element:<Admin> <MakeAnnouncement></MakeAnnouncement></Admin> },
+      element:<Admin>  <MakeAnnouncement></MakeAnnouncement> </Admin> },
     {path:"manageUsers",    
-        element:<Admin> <ManageUsers></ManageUsers> </Admin>},
+       element:<Admin> <ManageUsers></ManageUsers> </Admin>},
     {path:"reportedComments", 
-      element:<Admin>  <ReportedComments></ReportedComments></Admin>},
+      element:<Admin>  <ReportedComments></ReportedComments> </Admin>},
       // Component:ReportedComments
 
     // user
