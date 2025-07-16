@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const ReportedComments = () => {
   const queryClient = useQueryClient();
 
-  // ✅ Fetch reported comments
+  // Fetch reported comments
   const { data: reports = [], isLoading, error } = useQuery({
     queryKey: ["reported-comments"],
     queryFn: async () => {
@@ -15,28 +15,57 @@ const ReportedComments = () => {
     },
   });
 
-  // ✅ Delete comment mutation
+  // Delete comment mutation
   const deleteMutation = useMutation({
-    mutationFn: async (commentId) => {
-      await axios.delete(`http://localhost:5000/comments/${commentId}`);
+    mutationFn: async ({ commentId, reportId }) => {
+      await axios.delete(
+        `http://localhost:5000/comments_remove/${commentId}/${reportId}`
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["reported-comments"]);
       Swal.fire("Deleted!", "Comment has been deleted.", "success");
     },
+    onError: (error) => {
+      Swal.fire(
+        "Error!",
+        error?.response?.data?.message || "Failed to delete comment.",
+        "error"
+      );
+    },
   });
 
-  // ✅ Warn user mutation (example: update or email logic)
+  // Confirm before delete
+  const handleDelete = (commentId, reportId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This will permanently delete the comment.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteMutation.mutate({ commentId, reportId });
+      }
+    });
+  };
+
+  // Warn user function (can be expanded to backend)
   const warnUser = (email) => {
     Swal.fire("User Warned", `Warning sent to ${email}`, "info");
-    // You can hit a backend route here to flag/send warning
   };
 
   if (isLoading) return <p>Loading reports...</p>;
   if (error) return <p className="text-red-500">Error loading reports.</p>;
 
   if (reports.length === 0) {
-    return <p className="text-center mt-10 text-gray-500">No reported comments found.</p>;
+    return (
+      <p className="text-center mt-10 text-gray-500">
+        No reported comments found.
+      </p>
+    );
   }
 
   return (
@@ -61,10 +90,12 @@ const ReportedComments = () => {
                 </td>
                 <td className="border px-4 py-2">{report.feedback}</td>
                 <td className="border px-4 py-2">{report.userEmail}</td>
-                <td className="border px-4 py-2 text-sm text-gray-500">{report.postId}</td>
+                <td className="border px-4 py-2 text-sm text-gray-500">
+                  {report.postId}
+                </td>
                 <td className="border px-4 py-2 flex flex-col md:flex-row gap-2">
                   <button
-                    onClick={() => deleteMutation.mutate(report.commentId)}
+                    onClick={() => handleDelete(report.commentId, report._id)}
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                   >
                     Delete Comment

@@ -34,7 +34,12 @@ const PostCard = ({ post }) => {
       </div>
 
       {/* Title */}
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
+ <Link
+          to={`/post/${_id}`}
+          className="text-blue-600 hover:underline font-medium">
+          <h2 className="text-xl font-bold mb-2">{title}</h2>
+        </Link>
+      
 
       {/* Description */}
       <p className="text-gray-700 mb-3">

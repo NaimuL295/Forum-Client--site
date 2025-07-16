@@ -1,61 +1,86 @@
-// import { useEffect, useState, useContext } from "react";
+
 // import { useParams } from "react-router";
+// import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 // import axios from "axios";
 // import { FacebookShareButton, FacebookIcon } from "react-share";
 // import { AuthContext } from "../Context/AuthContext";
-
+// import { useContext, useState } from "react";
+// import Swal from "sweetalert2";
 
 // const PostDetails = () => {
 //   const { id } = useParams();
-//   console.log(id);
-  
-//   const [post, setPost] = useState(null);
-//   const [comments, setComments] = useState([]);
 //   const { user } = useContext(AuthContext);
 //   const [commentText, setCommentText] = useState("");
-
+//   const queryClient = useQueryClient();
 //   const shareUrl = `${window.location.origin}/post/${id}`;
 
-//   useEffect(() => {
-//     // Fetch post details
-//     axios
-//       .get(`http://localhost:5000/postsDetails/${id}`)
-//       .then((res) => setPost(res.data))
-//       .catch((err) => console.error(err));
+//   // ✅ Fetch post details
+//   const { data: post, isLoading: loadingPost } = useQuery({
+//     queryKey: ["post", id],
+//     queryFn: async () => {
+//       const res = await axios.get(`http://localhost:5000/postsDetails/${id}`)
+//       return res.data;
+//     },
+//   });
 
-//     // Fetch comments
-//     axios
-//       .get(`http://localhost:5000/comments/post/${id}`)
-//       .then((res) => setComments(res.data))
-//       .catch((err) => console.error(err));
-//   }, [id]);
+//   // ✅ Fetch comments
+//   const { data: comments = [], isLoading: loadingComments } = useQuery({
+//     queryKey: ["comments", id],
+//     queryFn: async () => {
+//       const res = await axios.get(`http://localhost:5000/comments/post/${id}`);
+//       return res.data;
+//     },
+//   });
+
+//   // ✅ Mutation for voting
+//   const voteMutation = useMutation({
+//     mutationFn: (type) =>
+//       axios.patch(`http://localhost:5000/posts/${id}/vote`, { type }),
+//     onSuccess: () => {
+//       queryClient.invalidateQueries(["post", id]);
+//     },
+//   });
+
+//   // ✅ Mutation for comment
+//   const commentMutation = useMutation({
+//     mutationFn: (newComment) =>
+//       axios.post("http://localhost:5000/comments", newComment),
+//     onSuccess: () => {
+//       queryClient.invalidateQueries(["comments", id]);
+//       setCommentText("");
+//       Swal.fire("Comment added", "", "success");
+//     },
+//   });
+
+//   const handleVote = (type) => {
+//     if (!user) return Swal.fire("Login to vote", "", "info");
+//     voteMutation.mutate(type);
+//   };
 
 //   const handleCommentSubmit = () => {
 //     if (!commentText.trim()) return;
+//     if (!user) return Swal.fire("Login to comment", "", "info");
 
 //     const newComment = {
 //       postId: id,
 //       text: commentText,
-//       email: user?.email,
+//       email: user.email,
 //     };
 
-//     axios
-//       .post("http://localhost:5000/comments", newComment)
-//       .then((res) => {
-//         setComments([...comments, res.data]);
-//         setCommentText("");
-//       })
-//       .catch((err) => console.error(err));
+//     commentMutation.mutate(newComment);
 //   };
 
-//   if (!post) return <p className="text-center py-8">Loading...</p>;
-// console.log(post,"fdf");
+//   if (loadingPost) return <p className="text-center py-6">Loading post...</p>;
 
 //   return (
-//     <div className="max-w-3xl mx-auto px-4 py-6">
-//       {/* Author Info */}
+//     <div className="max-w-3xl mx-auto px-4 py-8">
+//       {/* Author */}
 //       <div className="flex items-center gap-3 mb-4">
-//         <img src={post.photo} className="w-10 h-10 rounded-full border" alt="" />
+//         <img
+//           src={post.photo}
+//           className="h-10 w-10 rounded-full border"
+//           alt="Author"
+//         />
 //         <div>
 //           <p className="font-semibold">{post.name}</p>
 //           <p className="text-sm text-gray-500">
@@ -64,30 +89,33 @@
 //         </div>
 //       </div>
 
-//       {/* Post Content */}
+//       {/* Post Info */}
 //       <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
-//       <p className="text-gray-700 mb-2">{post.description}</p>
-
-//       {/* Tags */}
+//       <p className="text-gray-700 mb-3">{post.description}</p>
 //       <div className="mb-2">
-//         <span className="inline-block bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">
+//         <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
 //           #{post.tag}
 //         </span>
 //       </div>
 
-//       {/* Votes */}
-//       <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
-//         <p>👍 {post.upVote}</p>
-//         <p>👎 {post.downVote}</p>
-//         <p>💬 {comments.length} Comments</p>
+//       {/* Interaction */}
+//       <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
+//         <button onClick={() => handleVote("up")} className="hover:text-blue-600">
+//           👍 {post.upVote}
+//         </button>
+//         <button onClick={() => handleVote("down")} className="hover:text-red-600">
+//           👎 {post.downVote}
+//         </button>
+//         <p>💬 {comments.length}</p>
 //         <FacebookShareButton url={shareUrl}>
 //           <FacebookIcon size={24} round />
 //         </FacebookShareButton>
 //       </div>
 
-//       {/* Comment Section */}
+//       {/* Comments */}
 //       <div className="mt-6">
 //         <h2 className="text-lg font-semibold mb-2">Comments</h2>
+
 //         {user ? (
 //           <div className="mb-4">
 //             <textarea
@@ -108,44 +136,55 @@
 //           <p className="text-gray-500">Login to post a comment.</p>
 //         )}
 
-//         {comments.map((comment, i) => (
-//           <div key={i} className="border-t py-2 text-sm">
-//             <p className="text-gray-800">{comment.text}</p>
-//             <p className="text-gray-400 text-xs">By: {comment.email}</p>
-//           </div>
-//         ))}
+//         {loadingComments ? (
+//           <p>Loading comments...</p>
+//         ) : comments.length === 0 ? (
+//           <p className="text-sm text-gray-500">No comments yet.</p>
+//         ) : (
+//           comments.map((c, i) => (
+//             <div key={i} className="border-t pt-3 mt-3 text-sm text-gray-700">
+//               <p>{c.text}</p>
+//               <p className="text-xs text-gray-400">By: {c.email}</p>
+//             </div>
+//           ))
+//         )}
 //       </div>
 //     </div>
 //   );
 // };
 
 // export default PostDetails;
+
+
 import { useParams } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { FacebookShareButton, FacebookIcon } from "react-share";
 import { AuthContext } from "../Context/AuthContext";
-import { useContext, useState } from "react";
+import { use,  useState } from "react";
 import Swal from "sweetalert2";
 
 const PostDetails = () => {
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
+  console.log(id);
+  
+  const { user } =use(AuthContext)
   const [commentText, setCommentText] = useState("");
+  const [reportCommentId, setReportCommentId] = useState(null);
   const queryClient = useQueryClient();
   const shareUrl = `${window.location.origin}/post/${id}`;
 
-  // ✅ Fetch post details
-  const { data: post, isLoading: loadingPost } = useQuery({
+  // Fetch post details
+  const { data: post, isLoading: loadingPost, error: postError } = useQuery({
     queryKey: ["post", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/postsDetails/${id}`)
+      const res = await axios.get(`http://localhost:5000/postsDetails/${id}`);
       return res.data;
     },
   });
 
-  // ✅ Fetch comments
-  const { data: comments = [], isLoading: loadingComments } = useQuery({
+  // Fetch comments
+  const { data: comments = [], isLoading: loadingComments, error: commentsError } = useQuery({
     queryKey: ["comments", id],
     queryFn: async () => {
       const res = await axios.get(`http://localhost:5000/comments/post/${id}`);
@@ -153,19 +192,15 @@ const PostDetails = () => {
     },
   });
 
-  // ✅ Mutation for voting
+  // Mutation for voting post
   const voteMutation = useMutation({
-    mutationFn: (type) =>
-      axios.patch(`http://localhost:5000/posts/${id}/vote`, { type }),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["post", id]);
-    },
+    mutationFn: (type) => axios.patch(`http://localhost:5000/posts/${id}/vote`, { type }),
+    onSuccess: () => queryClient.invalidateQueries(["post", id]),
   });
 
-  // ✅ Mutation for comment
+  // Mutation for adding comment
   const commentMutation = useMutation({
-    mutationFn: (newComment) =>
-      axios.post("http://localhost:5000/comments", newComment),
+    mutationFn: (newComment) => axios.post("http://localhost:5000/comments", newComment),
     onSuccess: () => {
       queryClient.invalidateQueries(["comments", id]);
       setCommentText("");
@@ -173,40 +208,62 @@ const PostDetails = () => {
     },
   });
 
+  // Mutation for reporting comment
+  const reportMutation = useMutation({
+    mutationFn: ({ commentId, feedback }) =>
+      axios.post(`http://localhost:5000/comments/report/${commentId}`,{ feedback }),
+    onSuccess: () => {
+      Swal.fire("Reported", "Thank you for your feedback", "success");
+      setReportCommentId(null);
+    },
+  });
+
+  // Voting handler
   const handleVote = (type) => {
     if (!user) return Swal.fire("Login to vote", "", "info");
     voteMutation.mutate(type);
   };
 
+  // Comment submit handler
   const handleCommentSubmit = () => {
-    if (!commentText.trim()) return;
+    if (!commentText.trim()) return Swal.fire("Please enter comment", "", "warning");
     if (!user) return Swal.fire("Login to comment", "", "info");
 
     const newComment = {
       postId: id,
       text: commentText,
       email: user.email,
+      name: user.displayName,
+      photo: user.photoURL,
     };
 
     commentMutation.mutate(newComment);
   };
 
+  // Report comment handler
+  const handleReport = (commentId, feedback) => {
+    if (!user) return Swal.fire("Login to report comments", "", "info");
+    if (!feedback) return Swal.fire("Select feedback before reporting", "", "warning");
+
+    reportMutation.mutate({ commentId, feedback });
+  };
+
   if (loadingPost) return <p className="text-center py-6">Loading post...</p>;
+  if (postError) return <p className="text-center py-6 text-red-500">Failed to load post.</p>;
+  if (!post) return <p className="text-center py-6">Post not found.</p>;
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       {/* Author */}
       <div className="flex items-center gap-3 mb-4">
         <img
-          src={post.photo}
+          src={post.photo || "/default-avatar.png"}
           className="h-10 w-10 rounded-full border"
           alt="Author"
         />
         <div>
           <p className="font-semibold">{post.name}</p>
-          <p className="text-sm text-gray-500">
-            {new Date(post.createdAt).toLocaleString()}
-          </p>
+          <p className="text-sm text-gray-500">{new Date(post.createdAt).toLocaleString()}</p>
         </div>
       </div>
 
@@ -221,10 +278,10 @@ const PostDetails = () => {
 
       {/* Interaction */}
       <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
-        <button onClick={() => handleVote("up")} className="hover:text-blue-600">
+        <button onClick={() => handleVote("up")} className="hover:text-blue-600" title="Upvote">
           👍 {post.upVote}
         </button>
-        <button onClick={() => handleVote("down")} className="hover:text-red-600">
+        <button onClick={() => handleVote("down")} className="hover:text-red-600" title="Downvote">
           👎 {post.downVote}
         </button>
         <p>💬 {comments.length}</p>
@@ -233,7 +290,7 @@ const PostDetails = () => {
         </FacebookShareButton>
       </div>
 
-      {/* Comments */}
+      {/* Comments Section */}
       <div className="mt-6">
         <h2 className="text-lg font-semibold mb-2">Comments</h2>
 
@@ -259,13 +316,49 @@ const PostDetails = () => {
 
         {loadingComments ? (
           <p>Loading comments...</p>
+        ) : commentsError ? (
+          <p className="text-red-500">Failed to load comments.</p>
         ) : comments.length === 0 ? (
           <p className="text-sm text-gray-500">No comments yet.</p>
         ) : (
-          comments.map((c, i) => (
-            <div key={i} className="border-t pt-3 mt-3 text-sm text-gray-700">
-              <p>{c.text}</p>
-              <p className="text-xs text-gray-400">By: {c.email}</p>
+          comments.map((c) => (
+            <div key={c._id} className="border-t pt-3 mt-3 text-sm text-gray-700">
+              <div className="flex items-center gap-2 mb-1">
+                <img
+                  src={c.photo || "/default-avatar.png"}
+                  alt={c.name || "User"}
+                  className="h-6 w-6 rounded-full border"
+                />
+                <p className="font-semibold">{c.name || c.email}</p>
+              </div>
+              <p>{c.text.length > 100 ? c.text.slice(0, 100) + "..." : c.text}</p>
+
+              {/* Report feedback and button */}
+              <div className="mt-1 flex items-center gap-2">
+                <select
+                  onChange={(e) => setReportCommentId({ id: c._id, feedback: e.target.value })}
+                  defaultValue=""
+                  className="border rounded px-2 py-1 text-sm"
+                >
+                  <option value="" disabled>
+                    Select feedback
+                  </option>
+                  <option value="Spam">Spam</option>
+                  <option value="Offensive">Offensive</option>
+                  <option value="Other">Other</option>
+                </select>
+                <button
+                  disabled={
+                    !reportCommentId ||
+                    reportCommentId.id !== c._id ||
+                    !reportCommentId.feedback
+                  }
+                  onClick={() => handleReport(reportCommentId.id, reportCommentId.feedback)}
+                  className="text-red-600 hover:underline disabled:text-gray-400"
+                >
+                  Report
+                </button>
+              </div>
             </div>
           ))
         )}
