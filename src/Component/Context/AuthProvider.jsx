@@ -41,7 +41,7 @@ useEffect(() => {
      
     if (currentUser?.email) {
      
-      axios.post("http://localhost:5000/jwt",
+      axios.post("https://forum-server-site.vercel.app/jwt",
         { email: currentUser?.email },
         { withCredentials: true }).
         then((result) => {

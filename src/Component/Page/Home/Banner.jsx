@@ -11,7 +11,7 @@
 //     if (!searchTerm.trim()) return;
 
 //     try {
-//       const res = await axios.get(`http://localhost:5000/posts/search?tag=${searchTerm}`);
+//       const res = await axios.get(`https://forum-server-site.vercel.app/posts/search?tag=${searchTerm}`);
 //       setResults(res.data || []);
 //     } catch (error) {
 //       console.error("Search error:", error);
@@ -133,7 +133,7 @@ const Banner = () => {
     if (!searchTerm.trim()) return;
 
     try {
-      const res = await axios.get(`http://localhost:5000/posts/search?tag=${searchTerm}`);
+      const res = await axios.get(`https://forum-server-site.vercel.app/posts/search?tag=${searchTerm}`);
       setResults(res.data || []);
       setSearchTerm("")
     } catch (error) {

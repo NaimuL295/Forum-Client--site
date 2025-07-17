@@ -81,7 +81,7 @@ const userInfo = {
 
 
 
-axios.post("http://localhost:5000/user",userInfo)
+axios.post("https://forum-server-site.vercel.app/user",userInfo)
   .then((res) => {
     console.log("User saved:", res.data);
  navigate(from)
@@ -117,7 +117,7 @@ const handlerGoogle = () => {
       };
 
       // Save to backend
-      axios.post("http://localhost:5000/user",userInfo)
+      axios.post("https://forum-server-site.vercel.app/user",userInfo)
         .then(() => {
           console.log("User saved:", );
           Swal.fire("Success", "Logged in with Google!", "success");

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { FaUserShield } from 'react-icons/fa';
 
 const fetchUsers = async (searchText) => {
-  const res = await axios.get(`http://localhost:5000/usersAll?search=${searchText}`);
+  const res = await axios.get(`https://forum-server-site.vercel.app/usersAll?search=${searchText}`);
   return res.data;
 };
 
@@ -20,7 +20,7 @@ const ManageUsers = () => {
   });
 console.log(users);
   const makeAdminMutation = useMutation({
-    mutationFn: (id) => axios.patch(`http://localhost:5000/users/admin/${id}`),
+    mutationFn: (id) => axios.patch(`https://forum-server-site.vercel.app/users/admin/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries(['users']);
     },

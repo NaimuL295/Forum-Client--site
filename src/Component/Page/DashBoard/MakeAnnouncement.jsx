@@ -28,7 +28,7 @@ const MakeAnnouncement = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/make/announcement", announcement);
+      await axios.post("https://forum-server-site.vercel.app/make/announcement", announcement);
       Swal.fire({
         icon: "success",
         title: "Announcement posted!",

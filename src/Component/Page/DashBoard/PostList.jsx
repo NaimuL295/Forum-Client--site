@@ -10,7 +10,7 @@ import PostCard from '../../Share/PostCard';
 const itemsPerPage = 5;
 
 const fetchPosts = async ({ page, sortBy }) => {
-  const res = await axios.get(`http://localhost:5000/posts?page=${page}&limit=${itemsPerPage}&sort=${sortBy}`);
+  const res = await axios.get(`https://forum-server-site.vercel.app/posts?page=${page}&limit=${itemsPerPage}&sort=${sortBy}`);
   return res.data; // totalItems: number
 };
 

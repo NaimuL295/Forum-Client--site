@@ -42,7 +42,7 @@ const Payment = () => {
       if (stripeError) throw new Error(stripeError.message);
 
       // ✅ Full backend URL
-      const { data: paymentIntentData } = await axios.post('http://localhost:5000/create-payment-intent', {
+      const { data: paymentIntentData } = await axios.post('https://forum-server-site.vercel.app/create-payment-intent', {
         amountInCents: amount,
         currency,
       });
@@ -54,7 +54,7 @@ const Payment = () => {
       if (confirmError) throw new Error(confirmError.message);
 
       // ✅ Badge update
-    const userResponse = await axios.patch(`http://localhost:5000/user_payment?email=${user?.email}`, {
+    const userResponse = await axios.patch(`https://forum-server-site.vercel.app/user_payment?email=${user?.email}`, {
   badge: 'Gold',
 });
 

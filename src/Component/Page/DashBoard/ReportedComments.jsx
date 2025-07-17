@@ -10,7 +10,7 @@ const ReportedComments = () => {
   const { data: reports = [], isLoading, error } = useQuery({
     queryKey: ["reported-comments"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/reports-all");
+      const res = await axios.get("https://forum-server-site.vercel.app/reports-all");
       return res.data;
     },
   });
@@ -19,7 +19,7 @@ const ReportedComments = () => {
   const deleteMutation = useMutation({
     mutationFn: async ({ commentId, reportId }) => {
       await axios.delete(
-        `http://localhost:5000/comments_remove/${commentId}/${reportId}`
+        `https://forum-server-site.vercel.app/comments_remove/${commentId}/${reportId}`
       );
     },
     onSuccess: () => {

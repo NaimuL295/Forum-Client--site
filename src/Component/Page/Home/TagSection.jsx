@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 const fetchTags = async () => {
-  const { data } = await axios.get('http://localhost:5000/tags_data');
+  const { data } = await axios.get('https://forum-server-site.vercel.app/tags_data');
   return data;
 };
 

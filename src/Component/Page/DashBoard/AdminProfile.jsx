@@ -9,19 +9,19 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
 // Fetch overview data
 const fetchOverview = async () => {
-  const { data } = await axios.get("http://localhost:5000/admin/overview");
+  const { data } = await axios.get("https://forum-server-site.vercel.app/admin/overview");
   return data;
 };
 
 // Fetch tags
 const fetchTags = async () => {
-  const { data } = await axios.get("http://localhost:5000/tags_list");
+  const { data } = await axios.get("https://forum-server-site.vercel.app/tags_list");
   return data;
 };
 
 // Add tag mutation
 const addTag = async (tagName) => {
-  const { data } = await axios.post("http://localhost:5000/tags", { name: tagName });
+  const { data } = await axios.post("https://forum-server-site.vercel.app/tags", { name: tagName });
   return data;
 };
 

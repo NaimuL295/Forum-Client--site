@@ -12,7 +12,7 @@ const MyPosts = () => {
     const axiosInstance=useSecure()
   useEffect(() => {
     if (user?.email) {
-      axiosInstance.get(`http://localhost:5000/user/post/email?emailParams=${user.email}`)
+      axiosInstance.get(`https://forum-server-site.vercel.app/user/post/email?emailParams=${user.email}`)
         .then(res => setMyPosts(res.data))
         .catch(err => console.error(err));
     }
@@ -27,7 +27,7 @@ const MyPosts = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/post_delate/${id}`)
+        axios.delete(`https://forum-server-site.vercel.app/post_delate/${id}`)
           .then(()=> {
               Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
               const filters=data =>data.filter(post => post._id !== id)

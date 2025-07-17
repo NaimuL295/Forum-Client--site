@@ -38,7 +38,7 @@ console.log(user);
   const { data: tags = [], isLoading: tagsLoading } = useQuery({
     queryKey: ["tagsData"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/tags_data");
+      const res = await axios.get("https://forum-server-site.vercel.app/tags_data");
       return res.data.map(tag => ({ value: tag.name, label: tag.name }));
     }
   });
@@ -76,7 +76,7 @@ console.log(user?.email);
 
 
     try {
-      const res = await axios.post("http://localhost:5000/create/posts", postData);
+      const res = await axios.post("https://forum-server-site.vercel.app/create/posts", postData);
       if (res.data.insertedId) {
         reset();
         Swal.fire({
