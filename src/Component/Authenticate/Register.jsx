@@ -99,8 +99,8 @@ axios.post("http://localhost:5000/user",userInfo)
 
     console.log("Registration Data:", data);
     Swal.fire("Success", "Registration complete!", "success");
-    // reset();
-    // setPreviewImage(null);
+    reset();
+    setPreviewImage(null);
   };
 
 const handlerGoogle = () => {
