@@ -40,11 +40,11 @@ import DashboardHome from "./Page/DashboardHome";
   {path:"register",Component:Register},
     ]
    },
-{ path:"dashboardLayout",element:<Private> <DashboardLayout></DashboardLayout> </Private>
-,
+{ path:"dashboardLayout",element:<Private> <DashboardLayout></DashboardLayout> </Private>,
+
   children:[
 
-    {index:true , Component:DashboardHome}
+    {index:true , Component:DashboardHome},
     {path:"adminProfile",  
        element: <Admin> <AdminProfile></AdminProfile> </Admin>},
     {path:"makeAnnouncement" ,
