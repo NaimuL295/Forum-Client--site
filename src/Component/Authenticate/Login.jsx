@@ -4,9 +4,10 @@ import { Link, useLocation } from 'react-router';
 
 import { FaEye, FaEyeSlash} from "react-icons/fa";
 import { AuthContext } from '../Context/AuthContext';
-import axios from 'axios';
+//import axios from 'axios';
 // import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
+import toast from 'react-hot-toast';
 const Login = () => {
 
   const location = useLocation();
@@ -28,25 +29,25 @@ const Login = () => {
     // TODO: Replace with actual login logic (e.g. Firebase, custom API)
  const { email, password } = data;
 
-//   if (!email) {
-//     toast.error("Email is required");
-//     return;
-//   }
+  if (!email) {
+    toast.error("Email is required");
+    return;
+  }
 
-//   if (!password || password.length < 6) {
-//     toast.error("Password must be at least 6 characters long");
-//     return;
-//   }
+  if (!password || password.length < 6) {
+    toast.error("Password must be at least 6 characters long");
+    return;
+  }
 
-//   if (!/[A-Z]/.test(password)) {
-//     toast.error("Password must contain at least one uppercase letter");
-//     return;
-//   }
+  if (!/[A-Z]/.test(password)) {
+    toast.error("Password must contain at least one uppercase letter");
+    return;
+  }
 
-//   if (!/[a-z]/.test(password)) {
-//     toast.error("Password must contain at least one lowercase letter");
-//     return;
-//   }
+  if (!/[a-z]/.test(password)) {
+    toast.error("Password must contain at least one lowercase letter");
+    return;
+  }
    signUser(email, password).then((result) => {
     console.log(result);
     navigate(from)
@@ -54,21 +55,21 @@ const Login = () => {
     console.log(err);
     
    });
-axios.post("http://localhost:5000/user", )
-  .then((res) => {
-    console.log("User saved:", res.data);
-  })
-  .catch((err) => {
-    console.error("Failed to save user:", err);
-  });
+// axios.post("http://localhost:5000/user", )
+//   .then((res) => {
+//     console.log("User saved:", res.data);
+//   })
+//   .catch((err) => {
+//     console.error("Failed to save user:", err);
+//   });
 ;
     reset();
   };
 
 
   const handlerGoogle=()=>{
-  googleSign().then((result) => {
-    console.log(result);
+  googleSign().then(() => {
+   
      navigate(from)
   }).catch((err) => {
     console.log(err);
