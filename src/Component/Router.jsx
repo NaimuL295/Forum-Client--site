@@ -20,6 +20,7 @@ import PostDetails from "./Share/PostDetails";
 import ReportedComments from "./Page/DashBoard/ReportedComments";
 import Private from "./Context/Private";
 import Admin from "./Context/Admin";
+import DashboardHome from "./Page/DashboardHome";
 
  export const router = createBrowserRouter([
   {
@@ -42,6 +43,8 @@ import Admin from "./Context/Admin";
 { path:"dashboardLayout",element:<Private> <DashboardLayout></DashboardLayout> </Private>
 ,
   children:[
+
+    {index:true , Component:DashboardHome}
     {path:"adminProfile",  
        element: <Admin> <AdminProfile></AdminProfile> </Admin>},
     {path:"makeAnnouncement" ,
