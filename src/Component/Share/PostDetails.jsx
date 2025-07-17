@@ -166,7 +166,7 @@ import Swal from "sweetalert2";
 
 const PostDetails = () => {
   const { id } = useParams();
-  console.log(id);
+
   
   const { user } =use(AuthContext)
   const [commentText, setCommentText] = useState("");
