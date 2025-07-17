@@ -12,12 +12,15 @@ const DashboardLayout = () => {
   const navigate=useNavigate()
    const { role, roleLoading } = useUserRole();
   const {logout } = use(AuthContext);
+ console.log(role);
  
   const LogOUt=()=>{
     logout().then(() => {
       navigate("/auth/login")
     })
   }
+  
+  
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router';
 
 import { FaEye, FaEyeSlash} from "react-icons/fa";
 import { AuthContext } from '../Context/AuthContext';
-//import axios from 'axios';
+import axios from 'axios';
 // import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
@@ -13,7 +13,7 @@ const Login = () => {
   const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from || '/';
-    const {googleSign,signUser}=use(AuthContext)
+    const {googleSign,userLogin}=use(AuthContext);
   const {
     register,
     handleSubmit,
@@ -48,27 +48,28 @@ const Login = () => {
     toast.error("Password must contain at least one lowercase letter");
     return;
   }
-   signUser(email, password).then((result) => {
+  userLogin(email,password).then((result) => {
     console.log(result);
     navigate(from)
    }).catch((err) => {
     console.log(err);
     
    });
-// axios.post("https://forum-server-site.vercel.app/user", )
-//   .then((res) => {
-//     console.log("User saved:", res.data);
-//   })
-//   .catch((err) => {
-//     console.error("Failed to save user:", err);
-//   });
+axios.post("https://forum-server-site.vercel.app/user", )
+  .then((res) => {
+    console.log("User saved:", res.data);
+  })
+  .catch((err) => {
+    console.error("Failed to save user:", err);
+  });
 ;
     reset();
   };
 
 
   const handlerGoogle=()=>{
-  googleSign().then(() => {
+  googleSign().then((result) => {
+   console.log(result);
    
      navigate(from)
   }).catch((err) => {

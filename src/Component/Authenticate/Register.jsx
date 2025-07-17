@@ -79,8 +79,6 @@ const userInfo = {
   badge: "Bronze", // default on registration
 };
 
-
-
 axios.post("https://forum-server-site.vercel.app/user",userInfo)
   .then((res) => {
     console.log("User saved:", res.data);

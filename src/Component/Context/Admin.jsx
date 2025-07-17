@@ -7,6 +7,7 @@ const Admin = ({children}) => {
 const {role,roleLoading}= useUserRole();
 
 
+
  if (loading || roleLoading) {
          return   <div className="flex justify-center items-center min-h-[200px]">
     <span className="loading loading-spinner text-primary w-16"></span>
@@ -15,7 +16,7 @@ const {role,roleLoading}= useUserRole();
 
 
 if (!user|| role !=="admin") {
-     return <Navigate state={{ from: location.pathname }} to="/forbidden"></Navigate>
+     return <Navigate state={{ from: location.pathname }} to="/"></Navigate>
 }
     return children
 };

@@ -1,15 +1,16 @@
-import axios from 'axios';
 import React, { use } from 'react';
+import axios from 'axios';
 import { AuthContext } from '../Context/AuthContext';
 
 
 const axiosInstance = axios.create({
+
   baseURL:"https://forum-server-site.vercel.app",
-  withCredentials:true
- 
+ withCredentials:true
 });
-const useSecure = () => {
-const {logout}=use(AuthContext);
+
+const useSecure= () => {
+const { logout}=use(AuthContext)
 
  axiosInstance.interceptors.response.use(
     (response) => response, // Success: pass through
@@ -26,8 +27,8 @@ const {logout}=use(AuthContext);
       return Promise.reject(error); 
     }
   );
-    
-  return axiosInstance
+
+    return axiosInstance;
 };
 
 export default useSecure;

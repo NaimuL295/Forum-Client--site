@@ -14,7 +14,6 @@ import { AuthContext } from "../../Context/AuthContext";
 
 const AddPost = () => {
   const { user } = use(AuthContext);
-console.log(user);
 
   
   const navigate = useNavigate();
@@ -42,7 +41,7 @@ console.log(user);
       return res.data.map(tag => ({ value: tag.name, label: tag.name }));
     }
   });
-console.log(user?.email);
+
 
   // ✅ Alert if post limit exceeded (once)
   useEffect(() => {
