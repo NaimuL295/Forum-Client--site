@@ -17,8 +17,6 @@ const MyPosts = () => {
         .catch(err => console.error(err));
     }
   }, [user?.email]);
-console.log(myPosts);
-
   const handleDelete = (id) => {
    
     Swal.fire({
