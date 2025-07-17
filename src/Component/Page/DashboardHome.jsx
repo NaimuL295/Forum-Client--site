@@ -10,10 +10,10 @@ const DashboardHome = () => {
     if (roleLoading) {
         return 
     }
-           if (role &&"admin"){
+           if (role ==="admin"){
             return <AdminProfile></AdminProfile>
            } 
-            if (role && "user") {
+            else {
                 return <MyProfile></MyProfile>
             }
         

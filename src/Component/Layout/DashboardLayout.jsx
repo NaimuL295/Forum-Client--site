@@ -12,7 +12,7 @@ const DashboardLayout = () => {
   const navigate=useNavigate()
    const { role, roleLoading } = useUserRole();
   const {logout } = use(AuthContext);
- console.log(role);
+
  
   const LogOUt=()=>{
     logout().then(() => {
