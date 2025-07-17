@@ -97,7 +97,7 @@ axios.post("http://localhost:5000/user",userInfo)
     
 });
 
-    console.log("Registration Data:", data);
+    // console.log("Registration Data:", data);
     Swal.fire("Success", "Registration complete!", "success");
     reset();
     setPreviewImage(null);
@@ -118,19 +118,19 @@ const handlerGoogle = () => {
 
       // Save to backend
       axios.post("http://localhost:5000/user",userInfo)
-        .then((res) => {
-          console.log("User saved:", res.data);
+        .then(() => {
+          console.log("User saved:", );
           Swal.fire("Success", "Logged in with Google!", "success");
           navigate(from)
         })
         .catch((err) => {
-          console.error("Failed to save user:", err);
-          Swal.fire("Error", "Could not save user", "error");
+          // console.error("Failed to save user:", err);
+          Swal.fire("Error", "Could not save user", "error" ,err);
         });
     })
     .catch((err) => {
-      console.log("Google Sign-In Error:", err);
-      Swal.fire("Error", "Google Sign-In failed", "error");
+      // console.log("Google Sign-In Error:", err);
+      Swal.fire("Error", "Google Sign-In failed", "error",err);
     });
 };
 
