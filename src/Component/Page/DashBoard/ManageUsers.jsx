@@ -184,14 +184,14 @@ const ManageUsers = () => {
           <tbody>
             {users.map(user => (
               <tr key={user._id}>
-                <td className="px-4 py-2 border">{user.displayName}</td>
-                <td className="px-4 py-2 border">{user.email}</td>
+                <td className="px-4 py-2 border">{user?.displayName}</td>
+                <td className="px-4 py-2 border">{user?.email}</td>
                 <td className="px-4 py-2 border capitalize">{user.role}</td>
-                <td className="px-4 py-2 border">{user.badge}</td>
+                <td className="px-4 py-2 border">{user?.badge}</td>
                 <td className="px-4 py-2 border space-x-2">
                   {user.role !== 'admin' ? (
                     <button
-                      onClick={() => handleMakeAdmin(user._id)}
+                      onClick={() => handleMakeAdmin(user?._id)}
                       className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
                     >
                       <FaUserShield className="inline mr-1" /> Make Admin
@@ -201,7 +201,7 @@ const ManageUsers = () => {
                   )}
 
                   <button
-                    onClick={() => handleDeleteUser(user._id)}
+                    onClick={() => handleDeleteUser(user?._id)}
                     className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
                   >
                     <FaTrash className="inline mr-1" /> Remove
