@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Payment = () => {
+  const {user}=use(AuthContext)
   const [processing, setProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [currency, setCurrency] = useState('usd');
@@ -52,9 +54,10 @@ const Payment = () => {
       if (confirmError) throw new Error(confirmError.message);
 
       // ✅ Badge update
-      const userResponse = await axios.patch('http://localhost:5000/user_payment', {
-        badge: 'Gold',
-      });
+    const userResponse = await axios.patch(`http://localhost:5000/user_payment?email=${user?.email}`, {
+  badge: 'Gold',
+});
+
 
       if (!userResponse.data.success) {
         throw new Error('Failed to update user badge');

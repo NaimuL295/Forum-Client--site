@@ -50,11 +50,10 @@ import Admin from "./Context/Admin";
        element:<Admin> <ManageUsers></ManageUsers> </Admin>},
     {path:"reportedComments", 
       element:<Admin>  <ReportedComments></ReportedComments> </Admin>},
-      // Component:ReportedComments
 
     // user
     {path:"addPost",
-      element:   <Private> <AddPost></AddPost> </Private>},
+      element:<Private> <AddPost></AddPost> </Private>},
     {path:"myPosts",
       element:<Private> <MyPosts></MyPosts></Private>},
 

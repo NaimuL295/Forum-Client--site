@@ -19,7 +19,7 @@ const Register = () => {
     register,
     handleSubmit,
     watch,
-    reset,
+   // reset,
     setValue,
     formState: { errors },
   } = useForm();
@@ -75,16 +75,16 @@ updateProfiles({displayName:data?.name,photoURL: data.photoUrl})
 const userInfo = {
   name: data?.name,
   email: data?.email,
-  photo: data?.photoURL,
+  photo: data?.photoUrl,
   badge: "Bronze", // default on registration
 };
 
 
 
-axios.post("http://localhost:5000/user", userInfo)
+axios.post("http://localhost:5000/user",userInfo)
   .then((res) => {
     console.log("User saved:", res.data);
-// navigate(from)
+ navigate(from)
   })
   .catch((err) => {
     console.error("Failed to save user:", err);
@@ -99,8 +99,8 @@ axios.post("http://localhost:5000/user", userInfo)
 
     console.log("Registration Data:", data);
     Swal.fire("Success", "Registration complete!", "success");
-    reset();
-    setPreviewImage(null);
+    // reset();
+    // setPreviewImage(null);
   };
 
 const handlerGoogle = () => {
