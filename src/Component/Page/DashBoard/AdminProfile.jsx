@@ -3,6 +3,7 @@ import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { AuthContext } from "../../Context/AuthContext";
+import {toast}   from "react-hot-toast";
 
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
@@ -57,7 +58,7 @@ const AdminProfile = () => {
 
   const handleAddTag = (e) => {
     e.preventDefault();
-    if (!tagName.trim()) return alert("Tag name required");
+    if (!tagName.trim()) return toast.success("Tag name required");
     mutation.mutate(tagName.trim());
   };
 
@@ -132,6 +133,7 @@ return (
 
     {/* Add Tag Section */}
     <div className="bg-white p-6 rounded-xl shadow max-w-lg mx-auto">
+     
       <h2 className="text-xl font-semibold mb-4 text-gray-800">Manage Tags</h2>
       <form onSubmit={handleAddTag} className="flex gap-4">
         <input

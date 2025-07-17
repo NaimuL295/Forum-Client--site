@@ -8,7 +8,9 @@ const DashboardHome = () => {
    
 
     if (roleLoading) {
-        return 
+        return   <div className="flex justify-center items-center min-h-[200px]">
+    <span className="loading loading-spinner text-primary w-16"></span>
+  </div> 
     }
            if (role ==="admin"){
             return <AdminProfile></AdminProfile>

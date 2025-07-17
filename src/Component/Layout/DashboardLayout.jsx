@@ -85,9 +85,13 @@ const DashboardLayout = () => {
                 </>
           )}
                 <>
-                  <NavLink to="/dashboardLayout/myProfile" className="flex items-center gap-2  px-3 py-2 rounded">
+
+                { role ==="user"?
+                  <NavLink to="/dashboardLayout/myProfile  " className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUser /> My Profile
                   </NavLink>
+             :""}
+                  
                   <NavLink to="/dashboardLayout/addPost" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaPlus /> Add Post
                   </NavLink>
