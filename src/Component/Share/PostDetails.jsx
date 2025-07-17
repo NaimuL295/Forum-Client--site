@@ -18,7 +18,7 @@
 //   const { data: post, isLoading: loadingPost } = useQuery({
 //     queryKey: ["post", id],
 //     queryFn: async () => {
-//       const res = await axios.get(`http://localhost:5000/postsDetails/${id}`)
+//       const res = await axios.get(`https://forum-server-site.vercel.app/postsDetails/${id}`)
 //       return res.data;
 //     },
 //   });
@@ -27,7 +27,7 @@
 //   const { data: comments = [], isLoading: loadingComments } = useQuery({
 //     queryKey: ["comments", id],
 //     queryFn: async () => {
-//       const res = await axios.get(`http://localhost:5000/comments/post/${id}`);
+//       const res = await axios.get(`https://forum-server-site.vercel.app/comments/post/${id}`);
 //       return res.data;
 //     },
 //   });
@@ -35,7 +35,7 @@
 //   // ✅ Mutation for voting
 //   const voteMutation = useMutation({
 //     mutationFn: (type) =>
-//       axios.patch(`http://localhost:5000/posts/${id}/vote`, { type }),
+//       axios.patch(`https://forum-server-site.vercel.app/posts/${id}/vote`, { type }),
 //     onSuccess: () => {
 //       queryClient.invalidateQueries(["post", id]);
 //     },
@@ -44,7 +44,7 @@
 //   // ✅ Mutation for comment
 //   const commentMutation = useMutation({
 //     mutationFn: (newComment) =>
-//       axios.post("http://localhost:5000/comments", newComment),
+//       axios.post("https://forum-server-site.vercel.app/comments", newComment),
 //     onSuccess: () => {
 //       queryClient.invalidateQueries(["comments", id]);
 //       setCommentText("");
@@ -174,11 +174,10 @@ const PostDetails = () => {
   const queryClient = useQueryClient();
   const shareUrl = `${window.location.origin}/post/${id}`;
 
-  // Fetch post details
   const { data: post, isLoading: loadingPost, error: postError } = useQuery({
     queryKey: ["post", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/postsDetails/${id}`);
+      const res = await axios.get(`https://forum-server-site.vercel.app/postsDetails/${id}`);
       return res.data;
     },
   });
@@ -187,20 +186,20 @@ const PostDetails = () => {
   const { data: comments = [], isLoading: loadingComments, error: commentsError } = useQuery({
     queryKey: ["comments", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/comments/post/${id}`);
+      const res = await axios.get(`https://forum-server-site.vercel.app/comments/post/${id}`);
       return res.data;
     },
   });
 
   // Mutation for voting post
   const voteMutation = useMutation({
-    mutationFn: (type) => axios.patch(`http://localhost:5000/posts/${id}/vote`, { type }),
+    mutationFn: (type) => axios.patch(`https://forum-server-site.vercel.app/posts/${id}/vote`, { type }),
     onSuccess: () => queryClient.invalidateQueries(["post", id]),
   });
 
   // Mutation for adding comment
   const commentMutation = useMutation({
-    mutationFn: (newComment) => axios.post("http://localhost:5000/comments", newComment),
+    mutationFn: (newComment) => axios.post("https://forum-server-site.vercel.app/comments", newComment),
     onSuccess: () => {
       queryClient.invalidateQueries(["comments", id]);
       setCommentText("");
@@ -211,7 +210,7 @@ const PostDetails = () => {
   // Mutation for reporting comment
   const reportMutation = useMutation({
     mutationFn: ({ commentId, feedback }) =>
-      axios.post(`http://localhost:5000/comments/report/${commentId}`,{ feedback }),
+      axios.post(`https://forum-server-site.vercel.app/comments/report/${commentId}`,{ feedback }),
     onSuccess: () => {
       Swal.fire("Reported", "Thank you for your feedback", "success");
       setReportCommentId(null);
