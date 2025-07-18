@@ -9,7 +9,7 @@ import { FaEye, FaEyeSlash} from "react-icons/fa";
 import { useNavigate } from 'react-router';
 
 import { AuthContext } from '../Context/AuthContext';
-import toast, { Toaster } from 'react-hot-toast';
+
 const Login = () => {
 
   const location = useLocation();
@@ -30,30 +30,10 @@ const Login = () => {
 
  const { email, password } = data;
 
-  if (!email) {
-    toast.error("Email is required");
-    return;
-  }
+ 
 
-  if (!password || password.length < 6) {
-    toast.error("Password must be at least 6 characters long");
-    return;
-  }
+  userLogin(email,password).then(() => {
 
-  if (!/[A-Z]/.test(password)) {
-    toast.error("Password must contain at least one uppercase letter");
-    return;
-  }
-
-  if (!/[a-z]/.test(password)) {
-    toast.error("Password must contain at least one lowercase letter");
-    return;
-  }  
-   console.log(email,password);
-  userLogin(email,password).then((result) => {
-
-   
-    console.log(result);
     navigate(from)
    }).catch((err) => {
     console.log(err);
@@ -137,10 +117,7 @@ const Login = () => {
 
    
         <div className="divider">OR</div>
-<Toaster
-  position="top-center"
-  reverseOrder={true}
-/>
+
      
         <button
           onClick={handlerGoogle}
