@@ -1,17 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-import useSecure from './useSecureInstance'; 
+ 
+import axios from 'axios';
 
-const useBadge = () => {
+const useMember = () => {
   const { user, loading: authLoading } = use(AuthContext);
-  const axiosSecure = useSecure();
+
 
   const { data: badge = "Bronze", isLoading: badgeLoading } = useQuery({
     queryKey: ["userBadge", user?.email],
     enabled: !authLoading && !!user?.email,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users_/${user.email}`);
+      const res = await axios.get(`https://forum-server-site.vercel.app/users_/${user.email}`);
       const userData = res.data;
 
       if (userData.membership) return "Gold";
@@ -22,4 +23,4 @@ const useBadge = () => {
   return { badge, badgeLoading };
 };
 
-export default useBadge;
+export default useMember;

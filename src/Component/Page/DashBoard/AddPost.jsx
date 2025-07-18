@@ -8,13 +8,12 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 
 import useBadge from "../../Hook/useMember";
-
-import useSecure from "../../Hook/useSecureInstance";
 import { AuthContext } from "../../Context/AuthContext";
-
+import useSecure from "../../Hook/useSecureInstance";
+  
 const AddPost = () => {
   const { user } = use(AuthContext);
-
+const axiosInstance = useSecure();
   
   const navigate = useNavigate();
   const { badge, badgeLoading } = useBadge();
@@ -22,7 +21,7 @@ const AddPost = () => {
 
   const [selectedTag, setSelectedTag] = useState(null);
   const { register, handleSubmit, reset } = useForm();
-  const axiosInstance=useSecure()
+  
   // ✅ TanStack Query for post count
   const { data: postCount = 0, isLoading: postLoading } = useQuery({
     queryKey: ["userPostCount", user?.email],
@@ -75,7 +74,7 @@ const AddPost = () => {
 
 
     try {
-      const res = await axios.post("https://forum-server-site.vercel.app/create/posts", postData);
+      const res = await axios.post("https://forum-server-site.vercel.app/create/posts",postData);
       if (res.data.insertedId) {
         reset();
         Swal.fire({

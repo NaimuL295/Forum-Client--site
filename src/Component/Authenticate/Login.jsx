@@ -3,11 +3,12 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation } from 'react-router';
 
 import { FaEye, FaEyeSlash} from "react-icons/fa";
-import { AuthContext } from '../Context/AuthContext';
-import axios from 'axios';
+
+//import axios from 'axios';
 // import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
-import toast from 'react-hot-toast';
+//import toast from 'react-hot-toast';
+import { AuthContext } from '../Context/AuthContext';
 const Login = () => {
 
   const location = useLocation();
@@ -17,7 +18,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    //reset,
     formState: { errors },
   } = useForm();
 
@@ -29,41 +30,44 @@ const Login = () => {
     // TODO: Replace with actual login logic (e.g. Firebase, custom API)
  const { email, password } = data;
 
-  if (!email) {
-    toast.error("Email is required");
-    return;
-  }
+  // if (!email) {
+  //   toast.error("Email is required");
+  //   return;
+  // }
 
-  if (!password || password.length < 6) {
-    toast.error("Password must be at least 6 characters long");
-    return;
-  }
+  // if (!password || password.length < 6) {
+  //   toast.error("Password must be at least 6 characters long");
+  //   return;
+  // }
 
-  if (!/[A-Z]/.test(password)) {
-    toast.error("Password must contain at least one uppercase letter");
-    return;
-  }
+  // if (!/[A-Z]/.test(password)) {
+  //   toast.error("Password must contain at least one uppercase letter");
+  //   return;
+  // }
 
-  if (!/[a-z]/.test(password)) {
-    toast.error("Password must contain at least one lowercase letter");
-    return;
-  }
+  // if (!/[a-z]/.test(password)) {
+  //   toast.error("Password must contain at least one lowercase letter");
+  //   return;
+  // }  
+   console.log(email,password);
   userLogin(email,password).then((result) => {
+
+   
     console.log(result);
     navigate(from)
    }).catch((err) => {
     console.log(err);
     
    });
-axios.post("https://forum-server-site.vercel.app/user", )
-  .then((res) => {
-    console.log("User saved:", res.data);
-  })
-  .catch((err) => {
-    console.error("Failed to save user:", err);
-  });
+// axios.post("https://forum-server-site.vercel.app/user", )
+//   .then((res) => {
+//     console.log("User saved:", res.data);
+//   })
+//   .catch((err) => {
+//     console.error("Failed to save user:", err);
+//   });
 ;
-    reset();
+   // reset();
   };
 
 
@@ -107,7 +111,7 @@ axios.post("https://forum-server-site.vercel.app/user", )
             <div className="relative">
                 {/* <Toaster></Toaster> */}
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? "password" : "text"}
                 className="input input-bordered w-full pr-12"
                 placeholder="********"
                 {...register("password", { required: "Password is required" })}
@@ -115,7 +119,7 @@ axios.post("https://forum-server-site.vercel.app/user", )
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-lg text-gray-500"
+                className="absolute z-50  right-3 top-3 text-lg text-gray-500"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>

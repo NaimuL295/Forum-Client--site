@@ -86,8 +86,8 @@ const DashboardLayout = () => {
           )}
                 <>
 
-                { role ==="user"?
-                  <NavLink to="/dashboardLayout/myProfile  " className="flex items-center gap-2  px-3 py-2 rounded">
+                { role !=="admin"?
+                  <NavLink to="/dashboardLayout/myProfile" className="flex items-center gap-2  px-3 py-2 rounded">
                     <FaUser /> My Profile
                   </NavLink>
              :""}
