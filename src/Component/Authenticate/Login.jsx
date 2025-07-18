@@ -5,10 +5,11 @@ import { Link, useLocation } from 'react-router';
 import { FaEye, FaEyeSlash} from "react-icons/fa";
 
 //import axios from 'axios';
-// import toast, { Toaster } from 'react-hot-toast';
+
 import { useNavigate } from 'react-router';
-//import toast from 'react-hot-toast';
+
 import { AuthContext } from '../Context/AuthContext';
+import toast, { Toaster } from 'react-hot-toast';
 const Login = () => {
 
   const location = useLocation();
@@ -18,37 +19,37 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    //reset,
+    reset,
     formState: { errors },
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data) => {
-    console.log('Login data:', data);
+  
 
     // TODO: Replace with actual login logic (e.g. Firebase, custom API)
  const { email, password } = data;
 
-  // if (!email) {
-  //   toast.error("Email is required");
-  //   return;
-  // }
+  if (!email) {
+    toast.error("Email is required");
+    return;
+  }
 
-  // if (!password || password.length < 6) {
-  //   toast.error("Password must be at least 6 characters long");
-  //   return;
-  // }
+  if (!password || password.length < 6) {
+    toast.error("Password must be at least 6 characters long");
+    return;
+  }
 
-  // if (!/[A-Z]/.test(password)) {
-  //   toast.error("Password must contain at least one uppercase letter");
-  //   return;
-  // }
+  if (!/[A-Z]/.test(password)) {
+    toast.error("Password must contain at least one uppercase letter");
+    return;
+  }
 
-  // if (!/[a-z]/.test(password)) {
-  //   toast.error("Password must contain at least one lowercase letter");
-  //   return;
-  // }  
+  if (!/[a-z]/.test(password)) {
+    toast.error("Password must contain at least one lowercase letter");
+    return;
+  }  
    console.log(email,password);
   userLogin(email,password).then((result) => {
 
@@ -67,7 +68,7 @@ const Login = () => {
 //     console.error("Failed to save user:", err);
 //   });
 ;
-   // reset();
+    reset();
   };
 
 
@@ -137,7 +138,10 @@ const Login = () => {
 
         {/* Divider */}
         <div className="divider">OR</div>
-
+<Toaster
+  position="top-center"
+  reverseOrder={true}
+/>
         {/* Google Login Button */}
         <button
           onClick={handlerGoogle}

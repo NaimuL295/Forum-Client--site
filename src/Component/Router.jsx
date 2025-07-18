@@ -21,23 +21,24 @@ import ReportedComments from "./Page/DashBoard/ReportedComments";
 import Private from "./Context/Private";
 import Admin from "./Context/Admin";
 import DashboardHome from "./Page/DashboardHome";
+import ErrorPage from "./Share/ErrorPage";
 
  export const router = createBrowserRouter([
   {
     path: "/",
     Component:Root,
     children:[
-     {index:true,
-  Component:Home},
+      {index:true, Component:Home},
    {path:"about",Component:About},
    {path:"/post/:id",Component:PostDetails},
-   {path:"memberShip",element:<MemberShip></MemberShip>}
+   {path:"memberShip",element:<MemberShip></MemberShip>},
+     {path:"/*",element:<ErrorPage></ErrorPage>}
     ]
   },
    {path:"auth",Component:Auth,
     children:[
   {path:"login",Component:Login},
-  {path:"register",Component:Register},
+  {path:"register",Component:Register}
     ]
    },
 { path:"dashboardLayout",element:<Private> <DashboardLayout></DashboardLayout> </Private>,
@@ -53,7 +54,7 @@ import DashboardHome from "./Page/DashboardHome";
        element:<Admin> <ManageUsers></ManageUsers> </Admin>},
     {path:"reportedComments", 
       element:<Admin>  <ReportedComments></ReportedComments> </Admin>},
-
+   
     // user
     {path:"addPost",
       element:<Private> <AddPost></AddPost> </Private>},
@@ -61,7 +62,8 @@ import DashboardHome from "./Page/DashboardHome";
       element:<Private> <MyPosts></MyPosts></Private>},
 
     {path:"myProfile",
-      element: <Private><MyProfile></MyProfile>   </Private>}
+      element: <Private><MyProfile></MyProfile>   </Private>},
+        
    ]
 }
 ]);

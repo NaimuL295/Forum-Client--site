@@ -12,7 +12,7 @@ const MyPosts = () => {
     const axiosInstance=useSecure()
   useEffect(() => {
     if (user?.email) {
-      axiosInstance.get(`https://forum-server-site.vercel.app/user/post/email?emailParams=${user.email}`)
+      axiosInstance.get(`https://forum-server-site.vercel.app/user/post/email?emailParams=${user?.email}`)
         .then(res => setMyPosts(res.data))
         .catch(err => console.error(err));
     }
@@ -52,15 +52,15 @@ const MyPosts = () => {
           <tbody>
             {myPosts.map(post => (
               <tr key={post._id} className="border-t ">
-                <td className="px-4 py-2 ">{post.title}</td>
+                <td className="px-4 py-2 ">{post?.title}</td>
                 <td className="px-4 py-2 text-center">{post.upVote - post.downVote}</td>
                 <td className="px-4 py-2 text-center">
-                  <Link to={`/comments/${post._id}`} className="text-blue-500 hover:underline flex justify-center">
+                  <Link to={`/post/${post?._id}`} className="text-blue-500 hover:underline flex justify-center">
                     <FaComments />
                   </Link>
                 </td>
                 <td className="px-4 py-2 text-center">
-                  <button onClick={() => handleDelete(post._id)} className="text-red-500 hover:text-red-700">
+                  <button onClick={() => handleDelete(post?._id)} className="text-red-500 hover:text-red-700">
                     <FaTrashAlt />
                   </button>
                 </td>

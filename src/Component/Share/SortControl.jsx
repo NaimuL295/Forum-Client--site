@@ -16,5 +16,4 @@ const SortControl = ({ sortBy, setSortBy }) => {
     </div>
   );
 };
-
 export default SortControl;

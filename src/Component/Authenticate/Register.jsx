@@ -8,6 +8,7 @@ import axios from "axios";
 
 import { useNavigate } from 'react-router';
 
+
 const Register = () => {
 
   const location = useLocation();
@@ -66,6 +67,9 @@ const Register = () => {
   };
 
   const onSubmit = (data) => {
+
+ 
+
 createUser(data?.email, data?.password).then((result) => {
     
 const res=result.user;
@@ -80,8 +84,8 @@ const userInfo = {
 };
 
 axios.post("https://forum-server-site.vercel.app/user",userInfo)
-  .then((res) => {
-    console.log("User saved:", res.data);
+  .then(() => {
+   
  navigate(from)
   })
   .catch((err) => {
@@ -163,35 +167,52 @@ const handlerGoogle = () => {
             {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
           </div>
 
-          {/* Password */}
-          <div className="form-control">
-            <label className="label">Password</label>
-            <input
-              type="password"
-              className="input input-bordered"
-              {...register("password", {
-                required: "Password is required",
-                minLength: { value: 6, message: "Minimum 6 characters" },
-              })}
-              placeholder="********"
-            />
-            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
-          </div>
+{/* Password */}
+<div className="form-control">
+  <label className="label">Password</label>
+  <input
+    type="password"
+    className="input input-bordered"
+    {...register("password", {
+      required: "Password is required",
+      minLength: {
+        value: 6,
+        message: "Password must be at least 6 characters",
+      },
+      validate: {
+        hasUpperCase: (value) =>
+          /[A-Z]/.test(value) || "Must include at least one uppercase letter",
+        hasLowerCase: (value) =>
+          /[a-z]/.test(value) || "Must include at least one lowercase letter",
+        hasNumber: (value) =>
+          /\d/.test(value) || "Must include at least one number",
+      },
+    })}
+    placeholder="********"
+  />
+  {errors.password && (
+    <p className="text-red-500 text-sm">{errors.password.message}</p>
+  )}
+</div>
 
-          {/* Confirm Password */}
-          <div className="form-control">
-            <label className="label">Confirm Password</label>
-            <input
-              type="password"
-              className="input input-bordered"
-              {...register("confirm", {
-                required: "Please confirm password",
-                validate: (val) => val === watch("password") || "Passwords do not match",
-              })}
-              placeholder="********"
-            />
-            {errors.confirm && <p className="text-red-500 text-sm">{errors.confirm.message}</p>}
-          </div>
+{/* Confirm Password */}
+<div className="form-control">
+  <label className="label">Confirm Password</label>
+  <input
+    type="password"
+    className="input input-bordered"
+    {...register("confirm", {
+      required: "Please confirm password",
+      validate: (val) =>
+        val === watch("password") || "Passwords do not match",
+    })}
+    placeholder="********"
+  />
+  {errors.confirm && (
+    <p className="text-red-500 text-sm">{errors.confirm.message}</p>
+  )}
+</div>
+
 
           {/* Image Upload */}
           <div className="form-control">
@@ -231,7 +252,10 @@ const handlerGoogle = () => {
          
         </form>
          <div className="divider">OR</div>
-        <div><button onClick={handlerGoogle}
+        <div>
+ 
+          
+          <button onClick={handlerGoogle}
          className="btn w-full my-1.5 bg-white text-black border-[#e5e5e5]">
   <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
   Login with Google
