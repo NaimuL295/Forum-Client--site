@@ -32,12 +32,11 @@ const Register = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Validate file type
+  
     if (!file.type.startsWith("image/")) {
       return Swal.fire("Invalid File", "Only image files are allowed (JPG, PNG)", "error");
     }
 
-    // Validate file size
     if (file.size > 5 * 1024 * 1024) {
       return Swal.fire("Too Large", "Image must be under 5MB", "error");
     }
@@ -53,7 +52,7 @@ const Register = () => {
       });
 
       const imageUrl = await imageUpload(file);
-      setValue("photoUrl", imageUrl); // save uploaded URL into react-hook-form
+      setValue("photoUrl", imageUrl); 
       Swal.close();
       Swal.fire("Success", "Image uploaded!", "success");
       
@@ -80,7 +79,7 @@ const userInfo = {
   name: data?.name,
   email: data?.email,
   photo: data?.photoUrl,
-  badge: "Bronze", // default on registration
+  badge: "Bronze", 
 };
 
 axios.post("https://forum-server-site.vercel.app/user",userInfo)
@@ -115,7 +114,7 @@ const handlerGoogle = () => {
         name: users?.displayName,
         email: users?.email,
         photo: users?.photoURL ,
-        badge: "Bronze", // default badge for new Google users
+        badge: "Bronze", 
       };
 
       // Save to backend

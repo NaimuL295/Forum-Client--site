@@ -9,7 +9,7 @@ const MyProfile = () => {
   const { user } = use(AuthContext);
   const axiosInstance = useSecure();
 
-  // ✅ Fetch user profile using TanStack
+
   const { data: users, isLoading: userLoading } = useQuery({
     queryKey: ['user', user?.email],
     enabled: !!user?.email,
@@ -19,7 +19,7 @@ const MyProfile = () => {
     },
   });
 
-  // ✅ Fetch user posts using TanStack
+ 
   const { data: posts = [], isLoading: postsLoading } = useQuery({
     queryKey: ['posts', user?.email],
     enabled: !!user?.email,
@@ -39,7 +39,7 @@ const MyProfile = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 sm:px-8 lg:px-12 bg-gradient-to-b from-gray-100 to-white rounded-xl shadow-lg">
-      {/* Profile Card */}
+   
       <div className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
         <div className="relative">
           <img

@@ -7,7 +7,7 @@ export   const getPaginationRange = (currentPage, totalPages) => {
   if (!currentPage || !totalPages || totalPages < 1) return [];
 
   for (let i = 1; i <= totalPages; i++) {
-    // Always show: first, last, and ±delta around currentPage
+  
     if (
       i === 1 ||
       i === totalPages ||

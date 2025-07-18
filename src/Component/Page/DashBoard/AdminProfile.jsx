@@ -8,19 +8,18 @@ import {toast}   from "react-hot-toast";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
-// Fetch overview data
+
 const fetchOverview = async () => {
   const { data } = await axios.get("https://forum-server-site.vercel.app/admin/overview");
   return data;
 };
 
-// Fetch tags
+
 const fetchTags = async () => {
   const { data } = await axios.get("https://forum-server-site.vercel.app/tags_list");
   return data;
 };
 
-// Add tag mutation
 const addTag = async (tagName) => {
   const { data } = await axios.post("https://forum-server-site.vercel.app/tags", { name: tagName });
   return data;
@@ -74,12 +73,12 @@ const AdminProfile = () => {
 
 return (
   <div className="max-w-5xl mx-auto p-6 space-y-10">
-    {/* Title */}
+   
     <h1 className="text-4xl font-bold text-center text-gray-800">Admin Dashboard</h1>
 
-    {/* Profile + Stats */}
+  
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
-      {/* Admin Info */}
+      
       <div className="bg-white p-6 rounded-xl shadow text-center md:col-span-1">
         <img
           src={user?.photoURL || "/default-avatar.png"}
@@ -107,7 +106,7 @@ return (
       </div>
     </div>
 
-    {/* Site Overview Pie Chart */}
+
     <div className="bg-white p-6 rounded-xl shadow">
       <h2 className="text-xl font-semibold mb-4 text-gray-800">Site Overview</h2>
       <ResponsiveContainer width="100%" height={300}>
@@ -131,7 +130,7 @@ return (
       </ResponsiveContainer>
     </div>
 
-    {/* Add Tag Section */}
+   
     <div className="bg-white p-6 rounded-xl shadow max-w-lg mx-auto">
      
       <h2 className="text-xl font-semibold mb-4 text-gray-800">Manage Tags</h2>

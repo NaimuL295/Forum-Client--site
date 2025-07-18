@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import axios from "axios";
 import { Link } from "react-router";
-import bannerImg2 from "../../../assets/photo-1522071820081-009f0129c71c.avif"; // Update path as needed
+import bannerImg2 from "../../../assets/photo-1522071820081-009f0129c71c.avif"; 
 
 const Banner = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,7 +26,7 @@ const Banner = () => {
 
   return (
     <div>
-      {/* Hero Section */}
+  
       <motion.section
         ref={sectionRef}
         className="relative py-24 px-8 text-white"
@@ -80,7 +80,7 @@ const Banner = () => {
         </motion.div>
       </motion.section>
 
-      {/* Search Results */}
+     
       {results.length > 0 && (
         <motion.div
           className="max-w-4xl mx-auto mt-10 px-4"
@@ -119,7 +119,7 @@ const Banner = () => {
         </motion.div>
       )}
 
-      {/* No results message */}
+     
       {results.length === 0 && searchTerm && (
         <div className="text-center mt-6 text-gray-500">No results found.</div>
       )}

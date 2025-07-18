@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const ReportedComments = () => {
   const queryClient = useQueryClient();
 
-  // Fetch reported comments
+
   const { data: reports = [], isLoading, error } = useQuery({
     queryKey: ["reported-comments"],
     queryFn: async () => {
@@ -15,7 +15,6 @@ const ReportedComments = () => {
     },
   });
 
-  // Delete comment mutation
   const deleteMutation = useMutation({
     mutationFn: async ({ commentId, reportId }) => {
       await axios.delete(
@@ -35,7 +34,7 @@ const ReportedComments = () => {
     },
   });
 
-  // Confirm before delete
+
   const handleDelete = (commentId, reportId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -52,7 +51,7 @@ const ReportedComments = () => {
     });
   };
 
-  // Warn user function (can be expanded to backend)
+
   const warnUser = (email) => {
     Swal.fire("User Warned", `Warning sent to ${email}`, "info");
   };

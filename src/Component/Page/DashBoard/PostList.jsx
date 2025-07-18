@@ -11,7 +11,7 @@ const itemsPerPage = 5;
 
 const fetchPosts = async ({ page, sortBy }) => {
   const res = await axios.get(`https://forum-server-site.vercel.app/posts?page=${page}&limit=${itemsPerPage}&sort=${sortBy}`);
-  return res.data; // totalItems: number
+  return res.data;
 };
 
 

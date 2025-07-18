@@ -28,7 +28,6 @@ const Login = () => {
   const onSubmit = (data) => {
   
 
-    // TODO: Replace with actual login logic (e.g. Firebase, custom API)
  const { email, password } = data;
 
   if (!email) {
@@ -110,7 +109,7 @@ const Login = () => {
           <div className="form-control">
             <label className="label block">Password</label>
             <div className="relative">
-                {/* <Toaster></Toaster> */}
+               
               <input
                 type={showPassword ? "password" : "text"}
                 className="input input-bordered w-full pr-12"
@@ -136,13 +135,13 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Divider */}
+   
         <div className="divider">OR</div>
 <Toaster
   position="top-center"
   reverseOrder={true}
 />
-        {/* Google Login Button */}
+     
         <button
           onClick={handlerGoogle}
           className="btn w-full bg-white text-black border border-gray-300 hover:border-primary"

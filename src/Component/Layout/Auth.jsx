@@ -16,7 +16,7 @@ const Auth = () => {
           />
         </div>
 
-        {/* Right Form Side */}
+    
         <div className="flex items-center justify-center p-6 md:p-10">
           <Outlet />
         </div>

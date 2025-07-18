@@ -22,7 +22,7 @@ const axiosInstance = useSecure();
   const [selectedTag, setSelectedTag] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   
-  // ✅ TanStack Query for post count
+
   const { data: postCount = 0, isLoading: postLoading } = useQuery({
     queryKey: ["userPostCount", user?.email],
     enabled: !!user?.email,
@@ -32,7 +32,7 @@ const axiosInstance = useSecure();
     }
   });
 
-  // ✅ TanStack Query for tags
+
   const { data: tags = [], isLoading: tagsLoading } = useQuery({
     queryKey: ["tagsData"],
     queryFn: async () => {
@@ -42,7 +42,6 @@ const axiosInstance = useSecure();
   });
 
 
-  // ✅ Alert if post limit exceeded (once)
   useEffect(() => {
     if (postCount >= 5 && !isMember) {
       Swal.fire({
@@ -58,7 +57,7 @@ const axiosInstance = useSecure();
     }
   }, [postCount, isMember, navigate]);
 
-  // ✅ Form Submit Handler
+
   const onSubmit = async (data) => {
     const postData = {
       name: user?.displayName,
@@ -95,7 +94,7 @@ const axiosInstance = useSecure();
     }
   };
 
-  // ✅ Show loading spinner
+  
   if (badgeLoading || postLoading || tagsLoading) {
     return (
       <div className="text-center py-10">
@@ -104,9 +103,9 @@ const axiosInstance = useSecure();
     );
   }
 
-  // ✅ Block form if limit reached
+
   if (postCount >= 5 && !isMember) {
-    return null; // Swal handles UI alert
+    return null; 
   }
 
   return (
@@ -114,7 +113,7 @@ const axiosInstance = useSecure();
       <h2 className="text-2xl font-bold mb-6 text-center">Create a New Post</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* User Info */}
+       
         <input
           type="text"
           defaultValue={user?.displayName}
@@ -134,7 +133,7 @@ const axiosInstance = useSecure();
           className="w-full p-2 border rounded bg-gray-100"
         />
 
-        {/* Post Title */}
+      
         <input
           {...register("title", { required: true })}
           type="text"
@@ -142,7 +141,7 @@ const axiosInstance = useSecure();
           className="w-full p-2 border rounded"
         />
 
-        {/* Post Description */}
+     
         <textarea
           {...register("description", { required: true })}
           placeholder="Post Description"
@@ -150,7 +149,7 @@ const axiosInstance = useSecure();
           className="w-full p-2 border rounded"
         ></textarea>
 
-        {/* Tag Dropdown */}
+      
         <Select
           options={tags}
           onChange={setSelectedTag}
