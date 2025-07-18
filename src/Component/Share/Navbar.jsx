@@ -21,9 +21,9 @@ const Navbar = () => {
       
      
       <div className=" lg:hidden  md:hidden dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-         <NavLink to="/" className="hover:text-blue-500   ">Home</NavLink>
-          </div>
+          {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle"> */}
+         <Link to="/" className="hover:text-blue-500">Home</Link>
+          {/* </div> */}
         
         
           {/* <ul
