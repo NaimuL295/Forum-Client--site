@@ -14,10 +14,11 @@ If you are developing a production application, we recommend using TypeScript wi
 
 A modern forum platform for discussions, built with React and Node.js.  
 
-![Forum Screenshot](https://i.ibb.co/R4pkTZhK/Screenshot-2025-08-08-170641.png)
+
 
 🔗 Live Demo
 https://b11-assigment-12.netlify.app/
+![Forum Screenshot](https://i.ibb.co/R4pkTZhK/Screenshot-2025-08-08-170641.png)
 
  🛠 Technologies
 - **Frontend**: - **Core**: React 19, Vite
