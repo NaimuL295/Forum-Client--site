@@ -10,12 +10,25 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ Forum Client/Site
 
-## ✨ Key Features
+A modern forum platform for discussions, built with React and Node.js.  
 
-- 🔐 User authentication (Login/Registration)
-- 📝 Create, read, update, and delete posts
-- 💬 Real-time comments and replies
-- 🔍 Advanced search and filtering
-- 🏷️ Category-based discussions
-- 📱 Fully responsive design
+![Forum Screenshot](https://i.ibb.co/R4pkTZhK/Screenshot-2025-08-08-170641.png)
+
+🔗 Live Demo
+https://b11-assigment-12.netlify.app/
+
+ 🛠 Technologies
+- **Frontend**: React, TailwindCSS  
+- **Backend**: Node.js, Express  
+- **Database**: MongoDB  
+- **Auth**: JWT  
+- **Deployment**: Vercel (Frontend), Render (Backend)  
+
+✨ Features
+- User authentication (signup/login)  
+- Create, read, update, and delete posts  
+- Real-time comments with replies  
+- Responsive design  
+
