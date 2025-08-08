@@ -20,7 +20,15 @@ A modern forum platform for discussions, built with React and Node.js.
 https://b11-assigment-12.netlify.app/
 
  🛠 Technologies
-- **Frontend**: React, TailwindCSS  
+- **Frontend**: - **Core**: React 19, Vite
+- **State Management**: TanStack Query (React Query)
+- **Styling**: TailwindCSS + DaisyUI
+- **Forms**: React Hook Form
+- **Routing**: React Router v7
+- **Animations**: Framer Motion
+- **UI**: React Icons, React Select, SweetAlert2
+- **Charts**: Recharts (for analytics)
+- **Social Sharing**: React Share 
 - **Backend**: Node.js, Express  
 - **Database**: MongoDB  
 - **Auth**: JWT  
