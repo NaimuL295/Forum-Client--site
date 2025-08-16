@@ -14,7 +14,7 @@ const ManageUsers = () => {
   const [searchText, setSearchText] = useState('');
   const queryClient = useQueryClient();
 
-  const { data: users = [], isLoading, isError } = useQuery({
+  const { data: users = [], isLoading,    isError } = useQuery({
     queryKey: ['users', searchText],
     queryFn: () => fetchUsers(searchText),
     keepPreviousData: true
@@ -25,6 +25,7 @@ const ManageUsers = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(['users']);
       Swal.fire('Success!', 'User is now an admin.', 'success');
+
     },
     onError: () => {
       Swal.fire('Error!', 'Failed to promote user.', 'error');

@@ -3,17 +3,18 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Payment from './Payment';
 import useMember from '../../Hook/useMember';
+import Spinner from '../../Share/Spinner';
 
 const stripePromise = loadStripe(import.meta.env.VITE_payment_Key); 
 
 const MemberShip = () => {
-
-
     const { badge, badgeLoading } = useMember();
 
  if (badgeLoading) {
     return (
-      <div className="text-center py-10 text-lg font-medium">Loading membership status...</div>
+      <div className="text-center py-10 text-lg font-medium"> membership status...
+      <Spinner></Spinner>
+      </div>
     );
   }
     if (badge ==="Gold") {

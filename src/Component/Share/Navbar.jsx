@@ -15,7 +15,7 @@ const Navbar = () => {
   };
   
   return (
-    <nav className=" shadow-sm px-2 py-6">
+    <nav className=" shadow-sm px-2 py-4  bg-white">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
       
       
@@ -58,7 +58,7 @@ const Navbar = () => {
           {/* Authentication Actions */}
           {!user ? (
             <NavLink
-              to="/auth/login"
+              to="/auth/register"
               className="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700"
             >
               Join Us

@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import axios from "axios";
 import { Link } from "react-router";
-import bannerImg2 from "../../../assets/photo-1522071820081-009f0129c71c.avif"; 
+import bannerImg2 from "../../../assets/2323.png.png"; 
 
 const Banner = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,7 +25,7 @@ const Banner = () => {
   };
 
   return (
-    <div>
+    <div  className="">
   
       <motion.section
         ref={sectionRef}
@@ -34,10 +34,11 @@ const Banner = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center h-full p-10"
-          style={{ backgroundImage: `url(${bannerImg2})` }}
-        ></div>
+      <div
+  className="absolute inset-0 h-screen w-full bg-cover bg-center "
+  style={{ backgroundImage: `url(${bannerImg2})` }}
+></div>
+
 
         <motion.div
           className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12"
@@ -67,7 +68,7 @@ const Banner = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                className="w-full px-6 py-3 rounded-l-lg focus:outline-none focus:ring-2 ring-blue-400 "
+                className="w-full px-6 py-3 rounded-l-lg focus:outline-none  text-white focus:ring-2 ring-blue-400 "
               />
               <button
                 onClick={handleSearch}
@@ -83,7 +84,7 @@ const Banner = () => {
      
       {results.length > 0 && (
         <motion.div
-          className="max-w-4xl mx-auto mt-10 px-4"
+          className="max-w-4xl relative z-50 mx-auto mt-10 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}

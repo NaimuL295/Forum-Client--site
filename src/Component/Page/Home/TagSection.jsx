@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../Share/Spinner';
 
 const fetchTags = async () => {
   const { data } = await axios.get('https://forum-server-site.vercel.app/tags_data');
@@ -15,9 +16,10 @@ const TagSection = () => {
 
   if (isLoading) {
     return (
-      <div className="my-6 text-center">
+      <div className="my-6 text-center  ">
+        <Spinner/>
         <h2 className="text-3xl font-bold mb-3">🔖 Tags</h2>
-        <p>Loading tags...</p>
+       
       </div>
     );
   }

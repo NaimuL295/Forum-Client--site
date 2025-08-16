@@ -1,12 +1,12 @@
 import {
-  createBrowserRouter,
+  createBrowserRouter, 
 } from "react-router";
 import Root from "./Layout/Root";
-import Register from "./Authenticate/Register";
+import Register from "./Authenticate/Register"; 
 import Login from "./Authenticate/Login";
-import DashboardLayout from "./Layout/DashboardLayout";
-import Auth from "./Layout/Auth";
-import Home from "./Page/Home/Home";
+import DashboardLayout from "./Layout/DashboardLayout"; 
+import Auth from "./Layout/Auth"; 
+import Home from "./Page/Home/Home"; 
 import About from "./Page/About/About";
 import MemberShip from "./Page/MemberShip/MemberShip";
 import MakeAnnouncement from "./Page/DashBoard/MakeAnnouncement";
@@ -22,6 +22,7 @@ import Private from "./Context/Private";
 import Admin from "./Context/Admin";
 import DashboardHome from "./Page/DashboardHome";
 import ErrorPage from "./Share/ErrorPage";
+import Contact from "./Share/Contact";
 
  export const router = createBrowserRouter([
   {
@@ -30,7 +31,9 @@ import ErrorPage from "./Share/ErrorPage";
     children:[
       {index:true, Component:Home},
    {path:"about",Component:About},
+   {path:"contact",Component:Contact},
    {path:"/post/:id",Component:PostDetails},
+
    {path:"memberShip",element:<MemberShip></MemberShip>},
      {path:"/*",element:<ErrorPage></ErrorPage>}
     ]

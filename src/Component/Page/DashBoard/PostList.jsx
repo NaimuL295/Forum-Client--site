@@ -6,6 +6,7 @@ import axios from 'axios';
 import SortControl from '../../Share/SortControl';
 import Pagination from '../../Share/Pagination';
 import PostCard from '../../Share/PostCard';
+import Spinner from '../../Share/Spinner';
 
 const itemsPerPage = 5;
 
@@ -28,7 +29,7 @@ const PostList = () => {
 
 
 
-  if (isLoading) return <p className="text-center mt-8">Loading posts...</p>;
+  if (isLoading) return <p className="text-center mt-8"> <Spinner/></p>;
   if (isError) return <p className="text-center mt-8 text-red-500">Failed to load posts.</p>;
 
   return (

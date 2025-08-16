@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import Spinner from "../../Share/Spinner";
 
 const fetchAnnouncements = async () => {
   const res = await axios.get("https://forum-server-site.vercel.app/announcements");
@@ -17,13 +18,13 @@ const AnnouncementSection = () => {
     queryFn: fetchAnnouncements,
   });
 
-  if (isPending) return <div>Loading announcements...</div>;
+  if (isPending) return <div className="my-5"> <Spinner></Spinner></div>;
   if (error) return <div>Error loading announcements.</div>;
   if (announcements.length === 0) return null;
 
   return (
-    <div className="my-8 p-4 rounded shadow">
-      <h2 className="text-2xl font-semibold mb-4">📢 Announcements</h2>
+    <div className="my-8 p-4 rounded shadow  bg-none    ">
+      <h2 className="text-2xl font-semibold mb-4 text text-center">📢 Announcements</h2>
       <ul className="space-y-4 grid  lg:grid-cols-3 md:grid-cols-2">
         {announcements.map((a) => (
           <li key={a._id} className="p-4 rounded shadow-sm">

@@ -19,7 +19,7 @@ const axiosInstance = useSecure();
   const navigate = useNavigate();
   const { badge, badgeLoading } = useBadge();
   const isMember = badge === "Gold";
-console.log(badge);
+
   const [selectedTag, setSelectedTag] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   

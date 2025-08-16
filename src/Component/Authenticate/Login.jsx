@@ -9,9 +9,10 @@ import { FaEye, FaEyeSlash} from "react-icons/fa";
 import { useNavigate } from 'react-router';
 
 import { AuthContext } from '../Context/AuthContext';
+import axios from 'axios';
 
 const Login = () => {
-
+const [iserror,setError]=useState("")
   const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from || '/';
@@ -30,7 +31,6 @@ const Login = () => {
 
  const { email, password } = data;
 
- 
 
   userLogin(email,password).then(() => {
 
@@ -39,25 +39,40 @@ const Login = () => {
     console.log(err);
     
    });
-// axios.post("https://forum-server-site.vercel.app/user", )
-//   .then((res) => {
-//     console.log("User saved:", res.data);
-//   })
-//   .catch((err) => {
-//     console.error("Failed to save user:", err);
-//   });
-;
+
     reset();
   };
 
 
   const handlerGoogle=()=>{
   googleSign().then((result) => {
-   console.log(result);
-   
+const userData=result.user
+
+
+const userInfo = {
+  name: userData?.name,
+  email: userData?.email,
+  photo: useForm?.photoUrl,
+  badge: "Bronze", 
+};
+
+
+    
+  // console.log(result);
+   axios.post("https://forum-server-site.vercel.app/user_new",
+{...userInfo}
+   )
+  .then(() => {
+
+    // console.log("User saved:", res.data);
+  })
+ 
+
+
+
      navigate(from)
   }).catch((err) => {
-    console.log(err);
+    setError(err)
     
   });
   }
@@ -96,6 +111,7 @@ const Login = () => {
                 placeholder="********"
                 {...register("password", { required: "Password is required" })}
               />
+              <p className='my-0.5 text-red-500 text-sm '>{iserror}</p>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
