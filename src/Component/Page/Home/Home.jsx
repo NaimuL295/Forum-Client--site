@@ -5,6 +5,7 @@ import PostList from '../DashBoard/PostList';
 import Pagination from '../../Share/Pagination';
 import AnnouncementSection from '../DashBoard/AnnouncementSection';
 import FAQSection from '../../Share/FAQSection';
+import ReviewSection from '../../Share/ReviewSection';
 
 const Home = () => {
     return (
@@ -15,7 +16,7 @@ const Home = () => {
             <TagSection></TagSection>
              <PostList />
       <Pagination />
-        {/* <ReviewSection /> */}
+        <ReviewSection />
 
     <FAQSection /> 
         </div>
