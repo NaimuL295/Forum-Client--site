@@ -26,7 +26,7 @@ const DashboardLayout = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
       {/* Main Content Area */}
-      <div className="drawer-content flex flex-col p-4 bg-gray-50 min-h-screen">
+      <div className="drawer-content flex flex-col p-4  min-h-screen">
        <div className="navbar bg-base-300 w-full lg:hidden">
                     <div className="flex-none ">
                         <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
@@ -54,7 +54,7 @@ const DashboardLayout = () => {
       {/* Sidebar Area */}
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <aside className="w-64 min-h-full bg-base-200 text-base-content p-4 flex flex-col justify-between">
+        <aside className="w-64 min-h-full  text-base-content p-4 flex flex-col justify-between">
           <div>
             <div className="text-xl font-bold  mb-6">
              <Link to="/"  className="inline-flex"><img src={logo} alt="Logo" className="h-8 w-8 max-sm:hidden" />

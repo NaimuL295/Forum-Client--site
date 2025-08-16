@@ -36,7 +36,7 @@ export default function FAQSection() {
       {/* 2-column grid */}
       <div className=" max-w-7xl mx-auto">
         {faqs.map((faq, index) => (
-         <div key={index} className="collapse collapse-arrow bg-base-100 border border-base-300">
+         <div key={index} className="collapse collapse-arrow  border border-base-300">
   <input type="radio" name="my-accordion-2" defaultChecked />
   <div className="collapse-title font-semibold">{faq.question}</div>
   <div className="collapse-content text-sm">{faq.answer}</div>

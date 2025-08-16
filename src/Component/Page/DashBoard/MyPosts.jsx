@@ -40,7 +40,7 @@ const MyPosts = () => {
     <div className="p-4">
       <h2 className="text-2xl   font-semibold mb-4">My Posts</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full border  text-black shadow-sm rounded-lg">
+        <table className="min-w-full border   shadow-sm rounded-lg">
           <thead className=" ">
             <tr>
               <th className="px-4 py-2 text-left">Title</th>
@@ -68,7 +68,7 @@ const MyPosts = () => {
             ))}
             {myPosts.length === 0 && (
               <tr>
-                <td colSpan="4" className="px-4 py-6 text-center text-gray-500">
+                <td colSpan="4" className="px-4 py-6 text-center ">
                   No posts found.
                 </td>
               </tr>

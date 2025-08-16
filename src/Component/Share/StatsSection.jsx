@@ -9,15 +9,15 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 ">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-extrabold mb-12">📊 Our Growing Community</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {stats.map((item, i) => (
-            <div key={i} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+            <div key={i} className=" p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
               <div className="flex justify-center mb-4">{item.icon}</div>
               <h3 className="text-4xl font-bold ">{item.value}</h3>
-              <p className="mt-2 text-gray-600">{item.label}</p>
+              <p className="mt-2 ">{item.label}</p>
             </div>
           ))}
         </div>

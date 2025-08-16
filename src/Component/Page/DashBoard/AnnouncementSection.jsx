@@ -29,8 +29,8 @@ const AnnouncementSection = () => {
         {announcements.map((a) => (
           <li key={a._id} className="p-4 rounded shadow-sm">
             <h3 className="text-lg font-bold">{a.title}</h3>
-            <p className="text-gray-600">{a.description}</p>
-            <div className="text-sm text-gray-400 mt-2">- {a.authorName}</div>
+            <p className="">{a.description}</p>
+            <div className="text-sm  mt-2">- {a.authorName}</div>
           </li>
         ))}
       </ul>

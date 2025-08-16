@@ -37,12 +37,12 @@ const TagSection = () => {
       <h2 className="text-3xl font-bold mb-3">🔖 Available Tags</h2>
       <div className="flex flex-wrap gap-3 justify-center">
         {tags.length === 0 ? (
-          <p className="text-gray-500">No tags available.</p>
+          <p className="">No tags available.</p>
         ) : (
           tags.map((tag) => (
             <button
               key={tag._id}
-              className="px-6 py-2 rounded-full bg-gray-100  transition"  >
+              className="px-6 py-2 rounded-full   transition"  >
               #{tag.name}
             </button>
           ))

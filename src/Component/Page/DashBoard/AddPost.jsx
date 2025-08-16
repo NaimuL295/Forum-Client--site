@@ -110,7 +110,7 @@ const axiosInstance = useSecure();
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 shadow-2xl bg-white rounded-lg">
+    <div className="max-w-2xl mx-auto px-4 py-8 shadow-2xl  rounded-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">Create a New Post</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -119,19 +119,19 @@ const axiosInstance = useSecure();
           type="text"
           defaultValue={user?.displayName}
           disabled
-          className="w-full p-2 border rounded bg-gray-100"
+          className="w-full p-2 border rounded "
         />
         <input
           type="email"
           defaultValue={user?.email}
           disabled
-          className="w-full p-2 border rounded bg-gray-100"
+          className="w-full p-2 border rounded "
         />
         <input
           type="text"
           defaultValue={user?.photoURL}
           disabled
-          className="w-full p-2 border rounded bg-gray-100"
+          className="w-full p-2 border rounded "
         />
 
       
@@ -155,6 +155,7 @@ const axiosInstance = useSecure();
           options={tags}
           onChange={setSelectedTag}
           value={selectedTag}
+          className="dark:text-gray-900"
           placeholder="Select a tag"
         />
 

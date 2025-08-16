@@ -105,21 +105,21 @@ const PostDetails = () => {
         />
         <div>
           <p className="font-semibold">{post.name}</p>
-          <p className="text-sm text-gray-500">{new Date(post.createdAt).toLocaleString()}</p>
+          <p className="text-sm ">{new Date(post.createdAt).toLocaleString()}</p>
         </div>
       </div>
 
       {/* Post Info */}
       <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
-      <p className="text-gray-700 mb-3">{post.description}</p>
+      <p className=" mb-3">{post.description}</p>
       <div className="mb-2">
-        <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+        <span className="inline-block  text-blue-800 text-xs px-2 py-1 rounded">
           #{post.tag}
         </span>
       </div>
 
       {/* Interaction */}
-      <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
+      <div className="flex items-center gap-4 text-sm  mb-6">
         <button onClick={() => handleVote("up")} className="hover:text-blue-600" title="Upvote">
           👍 {post.upVote}
         </button>
@@ -147,13 +147,13 @@ const PostDetails = () => {
             />
             <button
               onClick={handleCommentSubmit}
-              className="mt-2 bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700"
+              className="mt-2 bg-blue-600 px-3 py-1 text-sm rounded hover:bg-blue-700"
             >
               Submit Comment
             </button>
           </div>
         ) : (
-          <p className="text-gray-500">Login to post a comment.</p>
+          <p className="">Login to post a comment.</p>
         )}
 
         {loadingComments ? (
@@ -161,10 +161,10 @@ const PostDetails = () => {
         ) : commentsError ? (
           <p className="text-red-500">Failed to load comments.</p>
         ) : comments.length === 0 ? (
-          <p className="text-sm text-gray-500">No comments yet.</p>
+          <p className="text-sm ">No comments yet.</p>
         ) : (
           comments.map((c) => (
-            <div key={c._id} className="border-t pt-3 mt-3 text-sm text-gray-700">
+            <div key={c._id} className="border-t pt-3 mt-3 text-sm ">
               <div className="flex items-center gap-2 mb-1">
                 <img
                   src={c.photo || "/default-avatar.png"}

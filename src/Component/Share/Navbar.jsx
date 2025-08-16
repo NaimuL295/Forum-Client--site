@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router";
 
 import logo from "../../assets/communication.png"
 import NotificationBell from "./NotificationBell";
+import Theme from "./theme";
 
 const Navbar = () => {
   const { user, logout } = use(AuthContext);
@@ -15,7 +16,7 @@ const Navbar = () => {
   };
   
   return (
-    <nav className=" shadow-sm px-2 py-4  bg-white">
+    <nav className=" shadow-sm px-2 py-4  ">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
       
       
@@ -43,7 +44,7 @@ const Navbar = () => {
       
         <Link to="/" className="max-sm:text-base    text-2xl font-bold flex items-center gap-2">
           <img src={logo} alt="Logo" className="h-8 w-8 max-sm:hidden" />
-           <h1 className="max-sm:hidden text-2xl">TalkNexus</h1>
+           <h1 className="max-sm:hidden text-2xl">Talk<span className="text-yellow-500">Nexus</span></h1>
         </Link>
 
         {/* Main Navigation Links */}
@@ -51,7 +52,7 @@ const Navbar = () => {
           <NavLink to="/" className="hover:text-blue-500  max-sm:hidden ">Home</NavLink>
       <NavLink to="/about" className="hover:text-blue-500   ">About</NavLink>
           <NavLink to="/membership" className="hover:text-blue-500    ">Membership</NavLink>
-
+<Theme/>
           {/* Notification Icon */} 
           <NotificationBell />   
 
@@ -59,7 +60,7 @@ const Navbar = () => {
           {!user ? (
             <NavLink
               to="/auth/register"
-              className="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700"
+              className="bg-blue-600  px-4 py-1 rounded-md hover:bg-blue-700"
             >
               Join Us
             </NavLink>
@@ -72,7 +73,7 @@ const Navbar = () => {
                 className="h-10 w-10 rounded-full border cursor-pointer"
               />
               {openDropdown && (
-                <div className="absolute right-0 top-12   bg-white shadow-lg border rounded w-40 z-50">
+                <div className="absolute right-0 top-12    shadow-lg border rounded w-40 z-50">
                   <div className="px-4 py-2 font-medium">{user?.displayName}</div>
                   <Link to="/dashboardLayout" className="block px-4 py-2 ">Dashboard</Link>
                   <button

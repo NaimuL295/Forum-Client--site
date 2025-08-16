@@ -26,10 +26,10 @@ const ReviewSection = () => {
   return (
     <section className=" py-16 px-6 lg:px-15">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+        <h2 className="text-3xl font-bold  mb-4">
           What Our Users Say
         </h2>
-        <p className="text-gray-600 mb-10">
+        <p className=" mb-10">
           Real experiences from members of our community
         </p>
 
@@ -38,7 +38,7 @@ const ReviewSection = () => {
           {reviews.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition"
+              className=" rounded-2xl shadow-md p-6 hover:shadow-lg transition"
             >
               {/* Stars */}
               <div className="flex justify-center mb-4">
@@ -51,14 +51,14 @@ const ReviewSection = () => {
               </div>
 
               {/* Review */}
-              <p className="text-gray-700 italic mb-6">"{item.review}"</p>
+              <p className=" italic mb-6">"{item.review}"</p>
 
               {/* User Info */}
               <div className="mt-auto">
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold ">
                   {item.name}
                 </h3>
-                <p className="text-sm text-gray-500">{item.role}</p>
+                <p className="text-sm ">{item.role}</p>
               </div>
             </div>
           ))}

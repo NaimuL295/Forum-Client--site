@@ -8,6 +8,7 @@ import FAQSection from '../../Share/FAQSection';
 import ReviewSection from '../../Share/ReviewSection';
 import PromotionSection from '../../Share/PromotionSection';
 import StatsSection from '../../Share/StatsSection';
+import NewsletterSection from '../../Share/NewsletterSection';
 
 const Home = () => {
     return (
@@ -16,14 +17,21 @@ const Home = () => {
            <div className='h-screen'> <Banner></Banner></div>
             <AnnouncementSection></AnnouncementSection>
             <TagSection></TagSection>
-             <PostList />
-      <Pagination />
-        <ReviewSection />
+          <section className="py-20">
+    <PostList />
+    <Pagination />
+  </section>
 
-    <FAQSection /> 
-    <PromotionSection/>
-    <StatsSection/>
-        </div>
+
+  <ReviewSection />
+  <FAQSection />
+
+  
+  <PromotionSection />
+  <StatsSection />
+  <NewsletterSection />
+</div>
+      
     );
 };
 
