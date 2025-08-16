@@ -7,6 +7,7 @@ import AnnouncementSection from '../DashBoard/AnnouncementSection';
 import FAQSection from '../../Share/FAQSection';
 import ReviewSection from '../../Share/ReviewSection';
 import PromotionSection from '../../Share/PromotionSection';
+import StatsSection from '../../Share/StatsSection';
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ const Home = () => {
 
     <FAQSection /> 
     <PromotionSection/>
+    <StatsSection/>
         </div>
     );
 };
