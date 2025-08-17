@@ -28,13 +28,13 @@ export default function FAQSection() {
 
 
   return (
-    <section className="px-6 py-16 max-w-6xl mx-auto">
+    <section className=" px-6 py-16  xl:max-w-[1350px]  md:w-11/12 mx-auto">
       <h2 className="text-4xl font-extrabold text-center mb-12 ">
         Frequently Asked Questions
       </h2>
 
       {/* 2-column grid */}
-      <div className=" max-w-7xl mx-auto">
+      <div className="">
         {faqs.map((faq, index) => (
          <div key={index} className="collapse collapse-arrow  border border-base-300">
   <input type="radio" name="my-accordion-2" defaultChecked />

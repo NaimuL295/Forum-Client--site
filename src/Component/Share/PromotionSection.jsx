@@ -4,7 +4,7 @@ const PromotionSection = () => {
   return (
     <section className=" py-20  text-center overflow-hidden">
      
-      <div className="max-w-3xl mx-auto">
+      <div className=" xl:max-w-[1350px]  md:w-11/12 mx-auto">
         <FaRocket className="w-14 h-14 mx-auto mb-6  animate-bounce" />
         <h2 className="text-4xl font-extrabold mb-6">🚀 Be Part of Something Big!</h2>
         <p className="text-lg mb-8 opacity-90">

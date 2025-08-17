@@ -74,19 +74,19 @@ const AdminProfile = () => {
 return (
   <div className="max-w-5xl mx-auto p-6 space-y-10">
    
-    <h1 className="text-4xl font-bold text-center text-gray-800">Admin Dashboard</h1>
+    <h1 className="text-4xl font-bold text-center ">Admin Dashboard</h1>
 
   
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
       
-      <div className="bg-white p-6 rounded-xl shadow text-center md:col-span-1">
+      <div className=" p-6 rounded-xl shadow text-center md:col-span-1">
         <img
           src={user?.photoURL || "/default-avatar.png"}
           alt={user?.displayName}
           className="w-24 h-24 rounded-full mx-auto mb-4 border"
         />
         <h2 className="text-lg font-semibold">{user?.displayName}</h2>
-        <p className="text-sm text-gray-600">{user?.email}</p>
+        <p className="text-sm ">{user?.email}</p>
       </div>
 
       {/* Stats */}
@@ -107,8 +107,8 @@ return (
     </div>
 
 
-    <div className="bg-white p-6 rounded-xl shadow">
-      <h2 className="text-xl font-semibold mb-4 text-gray-800">Site Overview</h2>
+    <div className=" p-6 rounded-xl shadow">
+      <h2 className="text-xl font-semibold mb-4 ">Site Overview</h2>
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
@@ -131,9 +131,9 @@ return (
     </div>
 
    
-    <div className="bg-white p-6 rounded-xl shadow max-w-lg mx-auto">
+    <div className=" p-6 rounded-xl shadow max-w-lg mx-auto">
      
-      <h2 className="text-xl font-semibold mb-4 text-gray-800">Manage Tags</h2>
+      <h2 className="text-xl font-semibold mb-4 ">Manage Tags</h2>
       <form onSubmit={handleAddTag} className="flex gap-4">
         <input
           type="text"
@@ -154,10 +154,10 @@ return (
 
       {tags.length > 0 && (
         <div className="mt-6">
-          <h3 className="font-medium mb-2 text-gray-700">Existing Tags</h3>
+          <h3 className="font-medium mb-2 ">Existing Tags</h3>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, idx) => (
-              <span key={idx} className="bg-gray-200 text-sm px-3 py-1 rounded-full">
+              <span key={idx} className=" text-sm px-3 py-1 rounded-full">
                 {tag.name}
               </span>
             ))}

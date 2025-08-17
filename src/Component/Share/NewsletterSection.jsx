@@ -27,7 +27,7 @@ const NewsletterSection = () => {
 
   return (
     <section className="relative py-20 ">
-      <div className="max-w-4xl mx-auto text-center px-6">
+      <div className=" xl:max-w-[1350px]  md:w-11/12 mx-auto text-center px-6">
         <FaEnvelope className="w-12 h-12 mx-auto mb-6 text-indigo-600" />
         <h2 className="text-2xl md:text-3xl font-extrabold  mb-4">
           📩 Stay Connected with the Forum

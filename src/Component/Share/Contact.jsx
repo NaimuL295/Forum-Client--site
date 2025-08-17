@@ -35,11 +35,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6 lg:px-20">
+    <div className="min-h-screen  py-12 px-6 lg:px-20">
       {/* Page Title */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-gray-800">Contact Us</h1>
-        <p className="text-gray-600 mt-2">
+        <h1 className="text-4xl font-extrabold ">Contact Us</h1>
+        <p className=" mt-2">
           We’d love to hear from you! Reach out with any questions or feedback.
         </p>
       </div>
@@ -47,14 +47,14 @@ const Contact = () => {
       {/* Contact Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Left Side - Form */}
-        <div className="bg-white shadow-lg rounded-2xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        <div className=" shadow-lg rounded-2xl p-8">
+          <h2 className="text-2xl font-bold mb-6 ">
             Send Us a Message
           </h2>
 
           <form ref={form} onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
-              <label className="block text-gray-700 mb-1">Full Name</label>
+              <label className="block  mb-1">Full Name</label>
               <input
                 {...register("name", { required: "Name is required" })}
                 type="text"
@@ -67,7 +67,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-1">Email Address</label>
+              <label className="block  mb-1">Email Address</label>
               <input
                 {...register("email", { required: "Email is required" })}
                 type="email"
@@ -80,7 +80,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-1">Message</label>
+              <label className="block  mb-1">Message</label>
               <textarea
                 {...register("message", { required: "Message is required" })}
                 rows="5"
@@ -105,25 +105,25 @@ const Contact = () => {
         {/* Right Side - Info  */}
         <div className="space-y-8">
           {/* Contact Info */}
-          <div className="bg-white shadow-lg rounded-2xl p-8">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          <div className="e shadow-lg rounded-2xl p-8">
+            <h2 className="text-2xl font-bold mb-4 ">
               Get in Touch
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className=" mb-4">
               You can also contact us directly via phone, email, or visit us at
               our office.
             </p>
             <ul className="space-y-3">
               <li>
-                <span className="font-bold text-gray-700">📍 Address:</span>{" "}
+                <span className="font-bold ">📍 Address:</span>{" "}
                 123 Main Street, Dhaka, Bangladesh
               </li>
               <li>
-                <span className="font-bold text-gray-700">📞 Phone:</span>{" "}
+                <span className="font-bold ">📞 Phone:</span>{" "}
                 +880 123 456 789
               </li>
               <li>
-                <span className="font-bold text-gray-700">✉️ Email:</span>{" "}
+                <span className="font-bold ">✉️ Email:</span>{" "}
                 info@example.com
               </li>
             </ul>

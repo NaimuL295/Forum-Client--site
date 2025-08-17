@@ -10,7 +10,7 @@ const StatsSection = () => {
 
   return (
     <section className="py-20 ">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className=" xl:max-w-[1350px]  md:w-11/12 mx-auto px-6 text-center">
         <h2 className="text-3xl font-extrabold mb-12">📊 Our Growing Community</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {stats.map((item, i) => (

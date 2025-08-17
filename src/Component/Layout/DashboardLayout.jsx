@@ -22,10 +22,10 @@ const DashboardLayout = () => {
   
   
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="  bg-base-100    drawer lg:drawer-open b ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
-      {/* Main Content Area */}
+      {/* Main Content  */}
       <div className="drawer-content flex flex-col p-4  min-h-screen">
        <div className="navbar bg-base-300 w-full lg:hidden">
                     <div className="flex-none ">
@@ -58,7 +58,7 @@ const DashboardLayout = () => {
           <div>
             <div className="text-xl font-bold  mb-6">
              <Link to="/"  className="inline-flex"><img src={logo} alt="Logo" className="h-8 w-8 max-sm:hidden" />
-                       <h1 className="max-sm:hidden">TalkNexus</h1></Link>
+                       <h1 className="">TalkNexus</h1></Link>
                      
             </div>
 

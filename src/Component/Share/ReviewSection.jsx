@@ -20,12 +20,33 @@ const reviews = [
     review:
       "One of the best online communities! The Q&A system is easy to use, and I love the reputation points feature.",
   },
+  {
+    name: "Nusrat Jahan",
+    role: "UI/UX Designer",
+    review:
+      "I enjoy sharing design resources here. The feedback from other members has improved my skills and creativity a lot.",
+  },
+  {
+    name: "Rakibul Hasan",
+    role: "Software Engineer",
+    review:
+      "Whenever I get stuck at work, I search this forum first. The detailed answers save me hours of debugging.",
+  },
+  {
+    name: "Mehedi Hasan",
+    role: "Full-Stack Developer",
+    review:
+      "The tutorials and discussions on MERN stack are super helpful. I’ve learned real-world problem solving here.",
+  },
+
+
 ];
+
 
 const ReviewSection = () => {
   return (
-    <section className=" py-16 px-6 lg:px-15">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className=" py-16 px-4 lg:px-5">
+      <div className=" xl:max-w-[1350px]  md:w-11/12  mx-auto text-center">
         <h2 className="text-3xl font-bold  mb-4">
           What Our Users Say
         </h2>
@@ -38,7 +59,7 @@ const ReviewSection = () => {
           {reviews.map((item, index) => (
             <div
               key={index}
-              className=" rounded-2xl shadow-md p-6 hover:shadow-lg transition"
+              className=" rounded-2xl shadow-md p-3 hover:shadow-lg transition"
             >
               {/* Stars */}
               <div className="flex justify-center mb-4">

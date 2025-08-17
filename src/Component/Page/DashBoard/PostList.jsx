@@ -29,15 +29,15 @@ const PostList = () => {
 
 
 
-  if (isLoading) return <p className="text-center mt-8"> <Spinner/></p>;
+  if (isLoading) return   <Spinner/>
   if (isError) return <p className="text-center mt-8 text-red-500">Failed to load posts.</p>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 mt-6">
+    <div className=" xl:max-w-[1350px]  md:w-11/12  mx-auto px-4 mt-6">
       <SortControl sortBy={sortBy} setSortBy={setSortBy} />
 
       {postData?.posts.length === 0 ? (
-        <p className="text-center text-gray-600 mt-6">No posts found.</p>
+        <p className="text-center  mt-6">No posts found.</p>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {postData.posts.map((post) => (

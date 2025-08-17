@@ -87,7 +87,7 @@ const ManageUsers = () => {
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto border">
-          <thead className="bg-gray-100">
+          <thead className="">
             <tr>
               <th className="px-4 py-2 border">Name</th>
               <th className="px-4 py-2 border">Email</th>
