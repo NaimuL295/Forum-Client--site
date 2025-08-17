@@ -19,15 +19,11 @@ const Navbar = () => {
     <nav className="  bg-base-100    shadow-sm px-2 py-4  ">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
       
-      
-     
       <div className=" lg:hidden  md:hidden dropdown">
           {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle"> */}
          <Link to="/" className="hover:text-blue-500">Home</Link>
           {/* </div> */}
-        
-        
-          {/* <ul
+           {/* <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-x-3 ">
           
@@ -59,8 +55,8 @@ const Navbar = () => {
           {/* Authentication Actions */}
           {!user ? (
             <NavLink
-              to="/auth/register"
-              className="bg-blue-600  px-4 py-1 rounded-md hover:bg-blue-700"
+              to="/auth/login"
+              className="bg-blue-600 text-white  px-4 py-1 rounded-md hover:bg-blue-700"
             >
               Join Us
             </NavLink>
@@ -70,10 +66,10 @@ const Navbar = () => {
                 onClick={() => setOpenDropdown(!openDropdown)}
                 src={user?.photoURL}
                 alt="profile"
-                className="h-10 w-10 rounded-full border cursor-pointer"
+                className="h-10 w-10  rounded-full border cursor-pointer"
               />
               {openDropdown && (
-                <div className="absolute right-0 top-12    shadow-lg border rounded w-40 z-50">
+                <div className="absolute right-0 top-12   bg-white text-black  shadow-lg border rounded w-40 z-50">
                   <div className="px-4 py-2 font-medium">{user?.displayName}</div>
                   <Link to="/dashboardLayout" className="block px-4 py-2 ">Dashboard</Link>
                   <button

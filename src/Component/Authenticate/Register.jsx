@@ -64,7 +64,7 @@ const Register = () => {
       Swal.fire("Upload Failed", "Try again later.", "error");
     }
   };
-
+//  create user database
   const onSubmit = (data) => {
 
  
@@ -82,7 +82,7 @@ const userInfo = {
   badge: "Bronze", 
 };
 
-axios.post("https://forum-server-site.vercel.app/user",userInfo)
+axios.post("https://forum-server-site.vercel.app/user_new",userInfo)
   .then(() => {
    
  navigate(from)
@@ -118,7 +118,7 @@ const handlerGoogle = () => {
       };
 
       // Save to backend
-      axios.post("https://forum-server-site.vercel.app/user",userInfo)
+      axios.post("https://forum-server-site.vercel.app/user_new",userInfo)
         .then(() => {
           console.log("User saved:", );
           Swal.fire("Success", "Logged in with Google!", "success");

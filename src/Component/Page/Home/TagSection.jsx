@@ -34,7 +34,7 @@ const TagSection = () => {
 
   return (
     <div className=" xl:max-w-[1350px]  md:w-11/12 mx-auto     my-6 text-center">
-      <h2 className="text-3xl font-bold mb-3">🔖 Available Tags</h2>
+      <h2 className="  text-xl md:text-base lg:text-3xl  font-bold mb-3">🔖 Available Tags</h2>
       <div className="flex flex-wrap gap-3 justify-center">
         {tags.length === 0 ? (
           <p className="">No tags available.</p>

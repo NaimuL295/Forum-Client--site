@@ -47,7 +47,7 @@ const ReviewSection = () => {
   return (
     <section className=" py-16 px-4 lg:px-5">
       <div className=" xl:max-w-[1350px]  md:w-11/12  mx-auto text-center">
-        <h2 className="text-3xl font-bold  mb-4">
+        <h2 className="text-xl md:text-base lg:text-3xl font-bold  mb-4">
           What Our Users Say
         </h2>
         <p className=" mb-10">

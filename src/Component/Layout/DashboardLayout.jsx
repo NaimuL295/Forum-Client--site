@@ -52,13 +52,13 @@ const DashboardLayout = () => {
       </div>
 
       {/* Sidebar Area */}
-      <div className="drawer-side">
+      <div className=" bg-base-100   drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <aside className="w-64 min-h-full  text-base-content p-4 flex flex-col justify-between">
           <div>
             <div className="text-xl font-bold  mb-6">
              <Link to="/"  className="inline-flex"><img src={logo} alt="Logo" className="h-8 w-8 max-sm:hidden" />
-                       <h1 className="">TalkNexus</h1></Link>
+                       <h1 className="text-xl">Talk<span className="text-yellow-500">Nexus</span></h1></Link>
                      
             </div>
 

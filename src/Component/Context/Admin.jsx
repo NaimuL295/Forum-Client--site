@@ -1,7 +1,7 @@
 import React, {  use } from 'react';
 import useUserRole from '../Hook/useUserRole';
 import { AuthContext } from './AuthContext';
-
+// admin check
 const Admin = ({children}) => {
     const {user,loading}=use(AuthContext)
 const {role,roleLoading}= useUserRole();

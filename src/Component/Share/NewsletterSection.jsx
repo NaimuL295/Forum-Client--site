@@ -13,8 +13,7 @@ const NewsletterSection = () => {
       return;
     }
 
-    console.log("Subscribed Email:", email);
-
+  //  console.log("Subscribed Email:", email);
    
      Swal.fire({
       icon: "success",
@@ -29,7 +28,7 @@ const NewsletterSection = () => {
     <section className="relative py-20 ">
       <div className=" xl:max-w-[1350px]  md:w-11/12 mx-auto text-center px-6">
         <FaEnvelope className="w-12 h-12 mx-auto mb-6 text-indigo-600" />
-        <h2 className="text-2xl md:text-3xl font-extrabold  mb-4">
+        <h2 className="text-xl md:text-base lg:text-3xl font-extrabold  mb-4">
           📩 Stay Connected with the Forum
         </h2>
         <p className="text-base md:text-lg  mb-8">

@@ -24,7 +24,7 @@ const AnnouncementSection = () => {
 
   return (
     <div className=" xl:max-w-[1350px]  md:w-11/12 mx-auto  my-8 p-4 rounded   bg-none    ">
-      <h2 className="text-2xl font-semibold mb-4 text text-center">📢 Announcements</h2>
+      <h2 className="text-xl md:text-base lg:text-3xl font-semibold mb-4 text text-center">📢 Announcements</h2>
       <ul className="space-y-4 grid gap-6 lg:grid-cols-3 md:grid-cols-2">
         {announcements.map((a) => (
           <li key={a._id} className="p-4 rounded shadow-sm">
