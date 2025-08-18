@@ -12,8 +12,8 @@ const Footer = () => {
 
     <p className="text-sm">&copy; 2025 Forum. All rights reserved.</p>
     <div className="flex gap-4 mt-4 md:mt-0">
-      <Link href="/" className="hover:text-blue-400">Home</Link>
-      <Link href="/about" className="hover:text-blue-400">About</Link>
+      <Link to="/" className="hover:text-blue-400">Home</Link>
+      <Link to="/about" className="hover:text-blue-400">About</Link>
       <Link to="/contact" className="hover:text-blue-400">Contact</Link>
     </div>
   </div>
