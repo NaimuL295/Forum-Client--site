@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Contact = () => {
-  const form = useRef();
+  const formRef = useRef();
 
-  // react-hook-form
   const {
     register,
     handleSubmit,
@@ -13,26 +13,40 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
+
   // handle form submit
-  const onSubmit = (data) => {
-    data. e.preventDefault();
+  const onSubmit = () => {
     emailjs
       .sendForm(
-    import.meta.env.VITE.PUBLIC_EMAILJS_SERVICE_ID,
-   import.meta.env.VITE.PUBLIC_EMAILJS_TEMPLATE_ID,
-        form.current  ,
-    import.meta.env.VITE.PUBLIC_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current, 
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
-.then(
+      .then(
         () => {
-          alert("Message sent successfully ✅");
-          reset();
+          Swal.fire({
+            icon: "success",
+            title: "Message sent successfully ✅",
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+          });
+          reset(); // form reset হবে
         },
         (error) => {
-          alert("Message failed ❌: " + error.text);
+          console.error(error);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Message failed ❌: " + error.text,
+          });
         }
       );
   };
+
 
   return (
     <div className="min-h-screen  py-12 px-6 lg:px-20">
@@ -52,7 +66,7 @@ const Contact = () => {
             Send Us a Message
           </h2>
 
-          <form ref={form} onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <label className="block  mb-1">Full Name</label>
               <input
